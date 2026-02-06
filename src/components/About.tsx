@@ -1,4 +1,4 @@
-export function App() {
+export function About() {
 
   return (
     <>
