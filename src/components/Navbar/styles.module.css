@@ -1,0 +1,31 @@
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+p {
+  color: var(--color-text-muted);
+}
+
+.card {
+  background: var(--color-bg-soft);
+  border: 1px solid var(--color-border);
+}
+
+a {
+  color: var(--color-accent);
+  font-size: 1.3em;
+}
+
+a:hover {
+  opacity: 0.7;
+}
+
+::selection {
+  background: var(--color-selection-bg);
+  color: var(--color-selection-text);
+}
+
+span {
+    font-size: 2em;
+}
