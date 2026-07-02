@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   title: "Victor Emanuel | Full Stack Developer",
   description:
     "Full Stack Developer focused on building modern web applications with Next.js, TypeScript, PHP, and Laravel. Explore my projects, learning journey, and development experience.",
-  metadataBase: new URL("https://yourdomain.com"),
+  metadataBase: new URL("https://portfolio-vituinho.vercel.app/"),
 
   alternates: {
     canonical: "/",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     title: "Victor Emanuel | Full Stack Developer",
     description:
       "Portfolio showcasing my projects, skills, and journey as a Full Stack Developer.",
-    url: "https://yourdomain.com",
+    url: "https://portfolio-vituinho.vercel.app/",
     siteName: "Victor Emanuel Portfolio",
     images: [
       {
