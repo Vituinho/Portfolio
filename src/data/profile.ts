@@ -27,5 +27,5 @@ export const profileData: ProfileInfo = {
     pt: "Meu interesse por programação começou anos atras depois de descobrir que programação pode criar coisas incríveis. Em 2025, decidi me dedicar de verdade ao desenvolvimento de software e desde então estudo de forma consistente. Um intercâmbio internacional de cinco meses também fortaleceu meu inglês e me proporcionou experiências pessoais e culturais que levo para minha trajetória profissional."
   },
   avatarUrl: "/images/avatar.jpeg",
-  cvUrl: "/placeholder-cv.pdf"
+  cvUrl: "/vituinho-cv.pdf"
 };
