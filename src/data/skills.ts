@@ -5,61 +5,54 @@ export const skillsData: Skill[] = [
   {
     name: "JavaScript",
     icon: "Code2",
-    category: "languages"
+    category: "frontend"
   },
   {
     name: "TypeScript",
     icon: "Shield",
-    category: "languages"
+    category: "frontend"
   },
   {
     name: "PHP",
     icon: "Code",
-    category: "languages"
+    category: "backend"
   },
   {
     name: "HTML5",
     icon: "FileCode",
-    category: "languages"
+    category: "frontend"
   },
   {
     name: "CSS3",
     icon: "Palette",
-    category: "languages"
-  },
-  {
-    name: "SQL",
-    icon: "Database",
-    category: "languages"
+    category: "frontend"
   },
 
-  // Frontend
   {
     name: "React",
     icon: "Atom",
-    category: "frontend"
+    category: "frameworks"
   },
   {
     name: "Next.js",
     icon: "Cpu",
-    category: "frontend"
+    category: "frameworks"
   },
   {
     name: "Tailwind CSS",
     icon: "Wind",
-    category: "frontend"
+    category: "frameworks"
   },
   {
     name: "Bootstrap",
     icon: "Layout",
-    category: "frontend"
+    category: "frameworks"
   },
 
-  // Backend
   {
     name: "Laravel",
     icon: "Server",
-    category: "backend"
+    category: "frameworks"
   },
   {
     name: "Node.js",
@@ -67,7 +60,6 @@ export const skillsData: Skill[] = [
     category: "backend"
   },
 
-  // Databases
   {
     name: "MySQL",
     icon: "Database",
@@ -79,7 +71,6 @@ export const skillsData: Skill[] = [
     category: "databases"
   },
 
-  // Tools
   {
     name: "Git",
     icon: "GitBranch",
