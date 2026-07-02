@@ -2,7 +2,7 @@ import { RecommendationItem } from '../types/portfolio';
 
 export const recommendationsData: RecommendationItem[] = [
   {
-    photo: "/images/recommendations/romulo.jfif",
+    photo: "/images/recommendations/romulo.jpg",
     name: "Rômulo da Cruz Vieira",
     position: {
       en: "Software Developer Pleno",
@@ -17,7 +17,7 @@ export const recommendationsData: RecommendationItem[] = [
     }
   },
   {
-    photo: "/images/recommendations/eduarda.jfif",
+    photo: "/images/recommendations/eduarda.jpg",
     name: "Eduarda Maganha de Almeida",
     position: {
       en: "Doctor in Computer Science",
@@ -32,7 +32,7 @@ export const recommendationsData: RecommendationItem[] = [
     }
   },
   {
-  photo: "/images/recommendations/allison.jfif",
+  photo: "/images/recommendations/allison.jpg",
   name: "Allison Fernando dos Santos",
   position: {
     en: "Senior Software QA Engineer",

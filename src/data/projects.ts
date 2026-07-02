@@ -16,7 +16,7 @@ export const projectsData: Project[] = [
       en: "GuessWord is my largest personal project so far. It combines a modern Next.js frontend with a backend API and focuses on clean architecture, responsive design, authentication, internationalization, and a great user experience. Throughout the project I learned how to structure larger applications and work with both frontend and backend technologies.",
       pt: "GuessWord é meu maior projeto pessoal até o momento. Ele combina um frontend moderno em Next.js com uma API backend e tem foco em arquitetura limpa, design responsivo, autenticação, internacionalização e uma boa experiência do usuário. Durante o desenvolvimento aprimorei minhas habilidades em aplicações Full Stack."
     },
-    image: "/images/projects/guessword.jfif",
+    image: "/images/projects/guessword.jpg",
     technologies: [
       "Next.js",
       "TypeScript",
@@ -77,7 +77,7 @@ export const projectsData: Project[] = [
       en: "EventHub was my first full stack project and a major milestone in my programming journey. It was built using PHP, HTML, CSS, JavaScript, and MySQL, giving me my first experience developing a complete web application from scratch. Throughout the project, I learned how frontend and backend communicate, how to organize a larger codebase, and the importance of security in web applications. Building EventHub helped me grow as a developer and laid the foundation for learning modern technologies like Next.js, TypeScript, and Laravel.",
       pt: "O EventHub foi meu primeiro projeto Full Stack e um marco importante na minha jornada como desenvolvedor. Ele foi desenvolvido utilizando PHP, HTML, CSS, JavaScript e MySQL, proporcionando minha primeira experiência criando uma aplicação web completa do zero. Durante o desenvolvimento, aprendi como frontend e backend se comunicam, como organizar um projeto maior e a importância da segurança em aplicações web. Construir o EventHub foi essencial para minha evolução como desenvolvedor e serviu como base para aprender tecnologias mais modernas, como Next.js, TypeScript e Laravel."
     },
-    image: "/images/projects/eventhub.jfif",
+    image: "/images/projects/eventhub.jpg",
     technologies: [
       "PHP",
       "HTML",
