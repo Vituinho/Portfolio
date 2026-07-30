@@ -93,7 +93,7 @@ export default function Contact() {
     { 
       icon: <Phone className="w-5 h-5" />, 
       title: "WhatsApp", 
-      value: locale === 'pt' ? "+55 (44) 92000-9524" : "+55 44 92000-9524", 
+      value: locale === 'pt' ? "+55 (44) 92006-1196" : "+55 44 92006-1196", 
       link: contactData.whatsapp 
     },
     { 
