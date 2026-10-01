@@ -16,9 +16,9 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Victor Emanuel | Full Stack Developer",
+  title: "Victor Emanuel | Software Engineer",
   description:
-    "Full Stack Developer focused on building modern web applications with Next.js, TypeScript, PHP, and Laravel. Explore my projects, learning journey, and development experience.",
+    "Software Engineer building web applications, internal systems and automation with Next.js, TypeScript, Python, FastAPI and PostgreSQL.",
   metadataBase: new URL("https://portfolio-vituinho.vercel.app/"),
 
   alternates: {
@@ -26,36 +26,37 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: "Victor Emanuel | Full Stack Developer",
+    title: "Victor Emanuel | Software Engineer",
     description:
-      "Portfolio showcasing my projects, skills, and journey as a Full Stack Developer.",
+      "Software Engineer building web applications, internal systems and automation with Next.js, TypeScript, Python, FastAPI and PostgreSQL.",
     url: "https://portfolio-vituinho.vercel.app/",
     siteName: "Victor Emanuel Portfolio",
     images: [
       {
-        url: "/images/avatar.jpeg",
+        url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Victor Emanuel Full Stack Developer Portfolio",
+        alt: "Victor Emanuel — Software Engineer / Engenheiro de Software",
       },
     ],
     locale: "en_US",
+    alternateLocale: ["pt_BR"],
     type: "website",
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Victor Emanuel | Full Stack Developer",
+    title: "Victor Emanuel | Software Engineer",
     description:
-      "Portfolio showcasing my projects, skills, and journey as a Full Stack Developer.",
-    images: ["/images/avatar.jpeg"],
+      "Software Engineer building web applications, internal systems and automation with Next.js, TypeScript, Python, FastAPI and PostgreSQL.",
+    images: ["/opengraph-image"],
   },
 
   icons: {
     icon: "/favicon.ico",
   },
 
-  manifest: "/manifest.json",
+  manifest: "/manifest.webmanifest",
 };
 
 export default function RootLayout({

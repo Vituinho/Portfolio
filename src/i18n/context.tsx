@@ -37,6 +37,25 @@ export const I18nProvider = ({ children }: { children: React.ReactNode }) => {
   // Fallback to English translation set if not mounted to prevent Server-Client mismatches
   const t = mounted && locale === 'pt' ? pt : en;
 
+  useEffect(() => {
+    if (!mounted) return;
+    const isPt = locale === 'pt';
+    const title = isPt ? 'Victor Emanuel | Engenheiro de Software' : 'Victor Emanuel | Software Engineer';
+    const description = isPt
+      ? 'Engenheiro de Software desenvolvendo aplicações web, sistemas internos e automações com Next.js, TypeScript, Python, FastAPI e PostgreSQL.'
+      : 'Software Engineer building web applications, internal systems and automation with Next.js, TypeScript, Python, FastAPI and PostgreSQL.';
+    document.documentElement.lang = isPt ? 'pt-BR' : 'en';
+    document.title = title;
+    for (const selector of ['meta[name="description"]', 'meta[property="og:description"]', 'meta[name="twitter:description"]']) {
+      document.querySelector(selector)?.setAttribute('content', description);
+    }
+    for (const selector of ['meta[property="og:title"]', 'meta[name="twitter:title"]']) {
+      document.querySelector(selector)?.setAttribute('content', title);
+    }
+    document.querySelector('meta[property="og:locale"]')?.setAttribute('content', isPt ? 'pt_BR' : 'en_US');
+    document.querySelector('meta[property="og:locale:alternate"]')?.setAttribute('content', isPt ? 'en_US' : 'pt_BR');
+  }, [locale, mounted]);
+
   return (
     <I18nContext.Provider value={{ locale, t, setLanguage }}>
       {children}
