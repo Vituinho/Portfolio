@@ -93,8 +93,8 @@ export interface Experience {
     en: string;
     pt: string;
   };
-  employmentType: 'full-time' | 'part-time' | 'contract' | 'internship' | 'freelance';
-  startDate: string;
+  employmentType?: 'full-time' | 'part-time' | 'contract' | 'internship' | 'freelance';
+  startDate?: string;
   endDate?: string; // empty or "Present" / "Atual"
   description: {
     en: string;

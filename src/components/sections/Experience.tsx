@@ -44,10 +44,11 @@ export default function Experience() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: idx * 0.1 }}
                 >
-                  <Card className="flex flex-col gap-4">
+                  <Card hoverEffect={false} className={`flex flex-col gap-4 ${!exp.endDate ? 'border-text-secondary/50 bg-bg-secondary md:p-8' : ''}`}>
                     {/* Header */}
                     <div className="flex flex-col md:flex-row md:items-start justify-between gap-2">
                       <div>
+                        {!exp.endDate && <span className="info-badge mb-3 text-xs">{locale === 'pt' ? 'Experiência atual' : 'Current experience'}</span>}
                         <h3 className="font-extrabold text-lg text-text-primary">
                           {exp.position[locale]}
                         </h3>
@@ -59,15 +60,15 @@ export default function Experience() {
                       <div className="flex flex-col md:items-end gap-1 text-xs text-text-secondary">
                         <span className="flex items-center gap-1.5 font-medium">
                           <Calendar className="w-3.5 h-3.5" />
-                          {exp.startDate} – {displayEndDate}
+                          {exp.startDate ? `${exp.startDate} – ${displayEndDate}` : displayEndDate}
                         </span>
                         <span className="flex items-center gap-1.5">
                           <MapPin className="w-3.5 h-3.5" />
                           {exp.location[locale]}
                         </span>
-                        <span className="px-2 py-0.5 rounded bg-bg-secondary border border-border-custom/50 max-w-max">
+                        {exp.employmentType && <span className="px-2 py-0.5 rounded bg-bg-secondary border border-border-custom/50 max-w-max">
                           {t.experience.types[exp.employmentType]}
-                        </span>
+                        </span>}
                       </div>
                     </div>
 
@@ -78,7 +79,7 @@ export default function Experience() {
 
                     {/* Achievements List */}
                     <div className="flex flex-col gap-2">
-                      <ul className="list-disc pl-5 text-xs text-text-secondary flex flex-col gap-1.5">
+                      <ul className="list-disc pl-5 text-sm text-text-secondary flex flex-col gap-2">
                         {exp.achievements[locale].map((item, id) => (
                           <li key={id} className="leading-relaxed">{item}</li>
                         ))}
