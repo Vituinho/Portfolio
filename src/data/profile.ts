@@ -1,31 +1,29 @@
 import { ProfileInfo } from '../types/portfolio';
 
 export const profileData: ProfileInfo = {
-  name: "Victor Emanuel",
-  title: {
-    en: "Full Stack Developer",
-    pt: "Desenvolvedor Full Stack"
-  },
+  name: 'Victor Emanuel',
+  title: { en: 'Software Engineer', pt: 'Engenheiro de Software' },
   shortIntro: {
-    en: "Passionate about building modern web applications and constantly learning new technologies to create better software.",
-    pt: "Apaixonado por criar aplicações web modernas e aprender constantemente novas tecnologias para desenvolver softwares cada vez melhores."
+    en: 'Building software, internal systems and automations that solve real-world business problems.',
+    pt: 'Desenvolvimento de softwares, sistemas internos e automações para resolver problemas reais de empresas.'
   },
   bio: {
-    en: "I'm an aspiring Full Stack Developer from Brazil with a strong interest in web development and software engineering. I'm currently studying technologies like Next.js, TypeScript, PHP, and Laravel while building personal projects that help me grow as a developer. I enjoy solving problems, learning new concepts, and turning ideas into practical applications.",
-    pt: "Sou um desenvolvedor Full Stack em formação, apaixonado por desenvolvimento web e engenharia de software. Atualmente estudo tecnologias como Next.js, TypeScript, PHP e Laravel enquanto desenvolvo projetos pessoais que fortalecem minhas habilidades. Gosto de resolver problemas, aprender novos conceitos e transformar ideias em aplicações práticas."
-  },
-  goals: {
-    en: "My goal is to become a professional software engineer, contribute to meaningful projects, continuously improve my skills, and build technology that positively impacts people's lives.",
-    pt: "Meu objetivo é me tornar um desenvolvedor de software profissional, contribuir para projetos relevantes, evoluir continuamente minhas habilidades e criar tecnologias que gerem impacto positivo na vida das pessoas."
-  },
-  passions: {
-    en: "Web development, leetcode, clean code, user experience, continuous learning, problem solving, and building projects that challenge me to improve every day.",
-    pt: "Desenvolvimento web, leetcode, código limpo, experiência do usuário, aprendizado contínuo, resolução de problemas e criação de projetos que me desafiem a evoluir todos os dias."
+    en: "I'm a Software Engineer from Brazil focused on practical technology solutions. My experience spans full-stack development, internal systems, business automation, technical support, infrastructure and process improvement.",
+    pt: 'Sou um Engenheiro de Software do Brasil focado em soluções práticas de tecnologia. Minha experiência abrange desenvolvimento full stack, sistemas internos, automação de negócios, suporte técnico, infraestrutura e melhoria de processos.'
   },
   story: {
-    en: "My interest in programming started years ago after discovering that coding can create amazing things. In 2025, I decided to dedicate myself seriously to software development and have been studying consistently ever since. A five-month international exchange program also strengthened my English and gave me valuable personal and cultural experiences that I bring into my professional journey.",
-    pt: "Meu interesse por programação começou anos atras depois de descobrir que programação pode criar coisas incríveis. Em 2025, decidi me dedicar de verdade ao desenvolvimento de software e desde então estudo de forma consistente. Um intercâmbio internacional de cinco meses também fortaleceu meu inglês e me proporcionou experiências pessoais e culturais que levo para minha trajetória profissional."
+    en: 'At Givova Transportes, I develop systems and automations used in company operations while supporting the IT environment, equipment, users and business systems.',
+    pt: 'Na Givova Transportes, desenvolvo sistemas e automações utilizados na operação da empresa e também atuo no suporte ao ambiente de TI, equipamentos, usuários e sistemas de negócio.'
   },
-  avatarUrl: "/images/avatar.jpeg",
-  cvUrl: "/vituinho-cv.pdf"
+  goals: {
+    en: 'I want to keep building useful systems and pursue an international technology career, connecting hands-on engineering with an understanding of business operations.',
+    pt: 'Quero continuar construindo sistemas úteis e seguir uma carreira internacional em tecnologia, conectando a prática da engenharia ao entendimento das operações de negócio.'
+  },
+  passions: {
+    en: 'In 2026, I lived and studied in Canada through an international exchange program. It strengthened my English, independence, adaptability and communication in multicultural environments.',
+    pt: 'Em 2026, morei e estudei no Canadá por meio de um intercâmbio internacional. A experiência fortaleceu meu inglês, minha independência, adaptabilidade e comunicação em ambientes multiculturais.'
+  },
+  avatarUrl: '/images/avatar.jpeg',
+  cvUrl: '/vituinho-cv.pdf'
 };
+
