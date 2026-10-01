@@ -1,366 +1,169 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useI18n } from '@/i18n/context';
 import { projectsData } from '@/data/projects';
+import type { Project } from '@/types/portfolio';
 import Card from '../ui/Card';
-import Button from '../ui/Button';
-import { ExternalLink, Github, Sparkles, Folder, Eye, X, Calendar, User, Clock } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowUpRight, Github, X, ScanBarcode, Ticket, Keyboard, ShoppingBag, Building2 } from 'lucide-react';
 import Image from 'next/image';
+
+const coverIcons = { 'givova-ticketing': Ticket, 'givova-coleta': ScanBarcode, keyforge: Keyboard, 'gvv-parana': ShoppingBag };
+
+function ProjectCover({ project, locale }: { project: Project; locale: 'en' | 'pt' }) {
+  const Icon = coverIcons[project.id as keyof typeof coverIcons] ?? Building2;
+  if (project.image) return (
+    <div className="relative aspect-[2/1] overflow-hidden border-b border-border-custom">
+      <Image src={project.image} alt={project.title[locale]} fill sizes="(max-width: 767px) 100vw, 560px" className="object-cover" />
+    </div>
+  );
+  return (
+    <div className="project-cover aspect-[2/1] border-b border-border-custom p-6 sm:p-8 flex flex-col justify-between" aria-hidden="true">
+      <div className="flex justify-between items-center">
+        <Icon className="size-8 text-text-secondary" strokeWidth={1.4} />
+        <span className="text-xs font-mono text-text-secondary">{project.kind === 'professional' ? 'GIVOVA /' : 'PERSONAL /'}</span>
+      </div>
+      <div>
+        <p className="text-xl sm:text-2xl font-semibold tracking-tight">{project.id === 'givova-coleta' ? 'Givova Coleta' : project.title[locale]}</p>
+        <p className="text-xs sm:text-sm text-text-secondary mt-2">{project.coverLabel?.[locale]}</p>
+      </div>
+    </div>
+  );
+}
 
 export default function Projects() {
   const { locale, t } = useI18n();
-  const [selectedCategory, setSelectedCategory] = useState('All');
-  const [selectedTech, setSelectedTech] = useState('All');
-  const [activeDetailProject, setActiveDetailProject] = useState<string | null>(null);
+  const [kind, setKind] = useState('all');
+  const [tech, setTech] = useState('all');
+  const [showMore, setShowMore] = useState(false);
+  const [activeProject, setActiveProject] = useState<Project | null>(null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const technologies = Array.from(new Set(projectsData.flatMap(p => p.technologies)));
+  const filtered = projectsData.filter(p => (kind === 'all' || p.kind === kind) && (tech === 'all' || p.technologies.includes(tech)));
+  const featured = filtered.filter(p => p.featured);
+  const more = filtered.filter(p => !p.featured);
+  const filtering = kind !== 'all' || tech !== 'all';
 
-  // Derive categories and technologies lists for filters
-  const categories = useMemo(() => {
-    const cats = new Set(projectsData.map(p => p.category));
-    return ['All', ...Array.from(cats)];
-  }, []);
+  useEffect(() => {
+    if (!activeProject) return;
+    const dialog = dialogRef.current;
+    const trigger = document.activeElement as HTMLElement | null;
+    const overflow = document.body.style.overflow;
+    dialog?.showModal();
+    document.body.style.overflow = 'hidden';
+    return () => {
+      dialog?.close();
+      document.body.style.overflow = overflow;
+      trigger?.focus();
+    };
+  }, [activeProject]);
 
-  const technologies = useMemo(() => {
-    const techs = new Set<string>();
-    projectsData.forEach(p => p.technologies.forEach(t => techs.add(t)));
-    return ['All', ...Array.from(techs)];
-  }, []);
-
-  // Filter projects list
-  const filteredProjects = useMemo(() => {
-    return projectsData.filter(p => {
-      const matchCat = selectedCategory === 'All' || p.category === selectedCategory;
-      const matchTech = selectedTech === 'All' || p.technologies.includes(selectedTech);
-      return matchCat && matchTech;
-    });
-  }, [selectedCategory, selectedTech]);
-
-  const detailProjectObj = useMemo(() => {
-    return projectsData.find(p => p.id === activeDetailProject) || null;
-  }, [activeDetailProject]);
+  const sourceLabel = (project: Project) => project.source === 'private'
+    ? t.projects.privateSource : project.source === 'open' ? t.projects.openSource : null;
+  const links = (project: Project) => (
+    <div className="flex gap-3 text-sm">
+      {project.githubUrl && <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 hover:underline"><Github className="size-4" />{t.projects.githubLink}</a>}
+      {project.demoUrl && <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 hover:underline">{t.projects.demoLink}<ArrowUpRight className="size-4" /></a>}
+    </div>
+  );
+  const renderGrid = (items: Project[]) => (
+    <div className="grid md:grid-cols-2 gap-6">
+      {items.map(project => (
+        <article key={project.id} className="min-w-0">
+          <Card className="overflow-hidden p-0 h-full flex flex-col">
+            <ProjectCover project={project} locale={locale} />
+            <div className="p-5 sm:p-6 flex flex-col flex-1">
+              <div className="flex flex-wrap gap-2 text-xs mb-4">
+                <span className={project.kind === 'professional' ? 'project-kind-professional info-badge' : 'info-badge'}>
+                  {project.kind === 'professional' ? t.projects.professional : t.projects.personal}
+                </span>
+                {sourceLabel(project) && <span className="info-badge text-text-secondary">{sourceLabel(project)}</span>}
+                {project.status && <span className="info-badge text-text-secondary">{project.status === 'completed' ? t.projects.statusCompleted : project.status === 'live' ? t.projects.statusLive : t.projects.statusInProgress}</span>}
+              </div>
+              <h3 className="text-lg font-semibold mb-3 leading-snug">{project.title[locale]}</h3>
+              <p className="text-sm text-text-secondary leading-relaxed mb-4">{project.description[locale]}</p>
+              <p className="text-sm leading-relaxed text-text-secondary mb-5 border-l-2 border-border-custom pl-3">{project.highlights[locale][0]}</p>
+              <div className="flex flex-wrap gap-1.5 mb-6">
+                {project.technologies.slice(0, 5).map(item => <span key={item} className="text-xs text-text-secondary rounded border border-border-custom px-2 py-1">{item}</span>)}
+                {project.technologies.length > 5 && <span className="text-xs text-text-secondary px-2 py-1">+{project.technologies.length - 5}</span>}
+              </div>
+              <div className="flex flex-wrap items-center justify-between gap-4 border-t border-border-custom pt-4 mt-auto">
+                <button onClick={() => setActiveProject(project)} aria-haspopup="dialog" className="inline-flex items-center gap-2 text-sm font-semibold cursor-pointer hover:underline">
+                  {t.projects.viewDetails}<ArrowUpRight className="size-4" />
+                </button>
+                {links(project)}
+              </div>
+            </div>
+          </Card>
+        </article>
+      ))}
+    </div>
+  );
 
   return (
     <section id="projects" className="py-20 px-4 max-w-6xl mx-auto border-t border-border-custom/50">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6 }}
-        className="w-full"
-      >
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+      <div className="flex flex-col gap-5 mb-8">
+        <div>
+          <p className="eyebrow mb-3">{t.projects.eyebrow}</p>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-3">{t.projects.title}</h2>
+          <p className="text-text-secondary max-w-2xl leading-relaxed">{t.projects.subtitle}</p>
+        </div>
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div className="flex flex-wrap gap-2" aria-label={t.projects.filterCategory}>
+            {['all', 'professional', 'personal'].map(item => (
+              <button key={item} onClick={() => setKind(item)} aria-pressed={kind === item} className={`px-3 py-2 rounded-lg text-sm border cursor-pointer transition-colors ${kind === item ? 'bg-accent-custom text-bg-primary border-accent-custom' : 'border-border-custom text-text-secondary hover:bg-bg-secondary'}`}>
+                {item === 'all' ? t.projects.filterAll : item === 'professional' ? t.projects.professionalFilter : t.projects.personalFilter}
+              </button>
+            ))}
+          </div>
+          <label className="flex flex-wrap items-center gap-2 text-sm text-text-secondary">
+            {t.projects.filterTech}
+            <select value={tech} onChange={e => setTech(e.target.value)} className="border border-border-custom bg-bg-primary rounded-lg px-3 py-2 max-w-full">
+              <option value="all">{t.projects.filterAll}</option>
+              {technologies.map(item => <option key={item}>{item}</option>)}
+            </select>
+          </label>
+        </div>
+      </div>
+      {renderGrid(featured)}
+      {more.length > 0 && (
+        <div className="mt-10">
+          <button onClick={() => setShowMore(!showMore)} aria-expanded={showMore || filtering} aria-controls="more-projects" className="action-link border border-border-custom mb-6 hover:bg-bg-secondary">
+            {showMore ? t.projects.hideMore : t.projects.moreProjects} ({more.length})
+          </button>
+          {(showMore || filtering) && <div id="more-projects">{renderGrid(more)}</div>}
+        </div>
+      )}
+      {filtered.length === 0 && <p className="text-text-secondary py-8" role="status">{t.projects.empty}</p>}
+      <dialog ref={dialogRef} aria-labelledby="project-dialog-title" onCancel={e => { e.preventDefault(); setActiveProject(null); }} onClick={e => { if (e.target === e.currentTarget) setActiveProject(null); }} className="m-auto w-[calc(100%_-_2rem)] max-w-3xl max-h-[90dvh] overflow-y-auto p-0 rounded-2xl border border-border-custom bg-bg-primary text-text-primary shadow-xl backdrop:bg-black/60">
+        {activeProject && (
           <div>
-            <h2 className="text-3xl font-bold text-text-primary mb-3 relative pb-3 border-b border-border-custom max-w-max">
-              {t.projects.title}
-            </h2>
-          </div>
-
-          {/* Category Filter Buttons */}
-          <div className="flex flex-wrap gap-2">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setSelectedCategory(cat)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all cursor-pointer ${
-                  selectedCategory === cat
-                    ? "bg-accent-custom text-bg-primary border-accent-custom"
-                    : "bg-bg-secondary text-text-secondary border-border-custom hover:border-text-secondary/30"
-                }`}
-              >
-                {cat === 'All' ? t.projects.filterAll : cat}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Tech Filter dropdown / list */}
-        <div className="mb-8 flex flex-wrap items-center gap-3 bg-bg-secondary border border-border-custom rounded-xl p-4">
-          <span className="text-xs font-bold text-text-secondary flex items-center gap-1.5">
-            <Sparkles className="w-3.5 h-3.5 text-accent-custom" />
-            {t.projects.filterTech}:
-          </span>
-          <div className="flex flex-wrap gap-2">
-            {technologies.map((tech) => (
-              <button
-                key={tech}
-                onClick={() => setSelectedTech(tech)}
-                className={`px-2.5 py-1 rounded-md text-xs transition-all cursor-pointer ${
-                  selectedTech === tech
-                    ? "bg-accent-custom/10 text-accent-custom border border-accent-custom/30 font-semibold"
-                    : "bg-bg-primary text-text-secondary border border-border-custom/50 hover:bg-bg-secondary"
-                }`}
-              >
-                {tech === 'All' ? t.projects.filterAll : tech}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Project Grid */}
-        <motion.div 
-          layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-          <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project) => (
-              <motion.div
-                key={project.id}
-                layout
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.3 }}
-                className="h-full"
-              >
-                <Card className="flex flex-col h-full overflow-hidden p-0">
-                  {/* Visual Image/Cover Box */}
-                  <div className="relative aspect-video bg-bg-secondary border-b border-border-custom/40 select-none overflow-hidden group">
-                    <Image
-                      src={project.image}
-                      alt={project.title[locale]}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-300" />
-
-                    {/* Featured Overlay Badge */}
-                    {project.featured && (
-                      <div className="absolute top-3 left-3 bg-accent-custom text-bg-primary text-[10px] font-bold tracking-wider px-2 py-0.5 rounded uppercase flex items-center gap-1 shadow-sm">
-                        <Sparkles className="w-3 h-3" />
-                        {t.projects.badgeFeatured}
-                      </div>
-                    )}
-
-                    {/* Status Badge */}
-                    <div className={`absolute top-3 right-3 text-[10px] font-bold px-2 py-0.5 rounded border ${
-                      project.status === 'completed'
-                        ? "bg-emerald-500/10 text-emerald-500 border-emerald-500/20"
-                        : "bg-amber-500/10 text-amber-500 border-amber-500/20"
-                    }`}>
-                      {project.status === 'completed' ? t.projects.statusCompleted : t.projects.statusInProgress}
-                    </div>
-                  </div>
-
-                  {/* Body Content */}
-                  <div className="p-5 flex flex-col flex-grow">
-                    <h3 className="font-bold text-lg text-text-primary mb-2 line-clamp-1">
-                      {project.title[locale]}
-                    </h3>
-                    
-                    <p className="text-text-secondary text-sm leading-relaxed mb-4 line-clamp-2 flex-grow">
-                      {project.description[locale]}
-                    </p>
-
-                    {/* Technologies list */}
-                    <div className="flex flex-wrap gap-1.5 mb-5">
-                      {project.technologies.slice(0, 4).map((tech) => (
-                        <span key={tech} className="px-2 py-0.5 rounded bg-bg-secondary border border-border-custom/50 text-[10px] text-text-secondary font-medium">
-                          {tech}
-                        </span>
-                      ))}
-                      {project.technologies.length > 4 && (
-                        <span className="px-2 py-0.5 rounded bg-bg-secondary border border-border-custom/50 text-[10px] text-text-secondary font-bold">
-                          +{project.technologies.length - 4}
-                        </span>
-                      )}
-                    </div>
-
-                    {/* Links and Buttons */}
-                    <div className="flex items-center justify-between gap-3 pt-3 border-t border-border-custom/40 mt-auto">
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        onClick={() => setActiveDetailProject(project.id)}
-                        className="gap-1.5 flex-grow cursor-pointer text-xs"
-                      >
-                        <Eye className="w-3.5 h-3.5" />
-                        {t.projects.viewDetails}
-                      </Button>
-
-                      <div className="flex items-center gap-1">
-                        {project.githubUrl && (
-                          <a
-                            href={project.githubUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-1.5 rounded-lg border border-border-custom hover:border-accent-custom hover:text-accent-custom transition-all text-text-secondary"
-                            aria-label={t.projects.githubLink}
-                          >
-                            <Github className="w-4 h-4" />
-                          </a>
-                        )}
-                        {project.demoUrl && (
-                          <a
-                            href={project.demoUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-1.5 rounded-lg border border-border-custom hover:border-accent-custom hover:text-accent-custom transition-all text-text-secondary"
-                            aria-label={t.projects.demoLink}
-                          >
-                            <ExternalLink className="w-4 h-4" />
-                          </a>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
-      </motion.div>
-
-      {/* Details Dialog Modal */}
-      <AnimatePresence>
-        {detailProjectObj && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-            {/* Backdrop Overlay */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.5 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setActiveDetailProject(null)}
-              className="absolute inset-0 bg-black"
-            />
-
-            {/* Modal Dialog Content */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 15 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 15 }}
-              transition={{ type: "spring", duration: 0.4 }}
-              className="relative w-full max-w-2xl bg-bg-primary border border-border-custom rounded-2xl shadow-2xl overflow-hidden z-10 max-h-[85vh] flex flex-col"
-            >
-              {/* Header section with cover */}
-              <div className="relative aspect-video bg-bg-secondary border-b border-border-custom/50">
-                <Image
-                  src={detailProjectObj.image}
-                  alt={detailProjectObj.title[locale]}
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-black/10" />
-                
-                {/* Close Button */}
-                <button
-                  onClick={() => setActiveDetailProject(null)}
-                  className="absolute top-4 right-4 p-2 rounded-full bg-bg-primary/80 backdrop-blur-sm border border-border-custom hover:bg-bg-primary transition-all cursor-pointer text-text-primary z-20 shadow-sm"
-                  aria-label={t.projects.closeDetails}
-                >
-                  <X className="w-4 h-4" />
-                </button>
-
-                <div className="absolute bottom-4 left-4 flex flex-wrap gap-2">
-                  <span className="px-2.5 py-1 rounded bg-bg-primary/95 text-xs text-text-primary font-bold border border-border-custom shadow-sm">
-                    {detailProjectObj.category}
-                  </span>
-                </div>
+            <div className="sticky top-0 bg-bg-primary z-10 p-5 sm:p-6 border-b border-border-custom flex items-start justify-between gap-4">
+              <div>
+                <p className="eyebrow mb-2">{activeProject.kind === 'professional' ? t.projects.professional : t.projects.personal}</p>
+                <h3 id="project-dialog-title" className="text-xl sm:text-2xl font-semibold">{activeProject.title[locale]}</h3>
               </div>
-
-              {/* Scrollable details */}
-              <div className="p-6 overflow-y-auto flex-grow flex flex-col gap-6">
-                <div>
-                  <h3 className="text-2xl font-bold text-text-primary mb-2">
-                    {detailProjectObj.title[locale]}
-                  </h3>
-                  <p className="text-xs text-text-secondary flex items-center gap-4">
-                    <span className="flex items-center gap-1"><Calendar className="w-3.5 h-3.5" /> {detailProjectObj.year}</span>
-                    <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5" /> {detailProjectObj.duration[locale]}</span>
-                    <span className="flex items-center gap-1"><User className="w-3.5 h-3.5" /> {detailProjectObj.myRole[locale]}</span>
-                  </p>
-                </div>
-
-                <div className="text-text-secondary text-sm leading-relaxed flex flex-col gap-4">
-                  <p>{detailProjectObj.longDescription[locale]}</p>
-                </div>
-
-                {/* Grid details (Challenge & Lessons) */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-border-custom/50 pt-4">
-                  <div>
-                    <h4 className="font-bold text-sm text-text-primary mb-1">
-                      {t.projects.details.challenge}
-                    </h4>
-                    <p className="text-xs text-text-secondary leading-relaxed">
-                      {detailProjectObj.challenges[locale]}
-                    </p>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-sm text-text-primary mb-1">
-                      {t.projects.details.lessons}
-                    </h4>
-                    <p className="text-xs text-text-secondary leading-relaxed">
-                      {detailProjectObj.lessonsLearned[locale]}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Highlights List */}
-                <div className="border-t border-border-custom/50 pt-4">
-                  <h4 className="font-bold text-sm text-text-primary mb-2">
-                    {t.projects.details.highlights}
-                  </h4>
-                  <ul className="list-disc pl-5 text-xs text-text-secondary flex flex-col gap-1.5">
-                    {detailProjectObj.highlights[locale].map((highlight, idx) => (
-                      <li key={idx}>{highlight}</li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Full tech stack list */}
-                <div className="border-t border-border-custom/50 pt-4">
-                  <div className="flex flex-wrap gap-1.5">
-                    {detailProjectObj.technologies.map((tech) => (
-                      <span key={tech} className="px-2.5 py-1 rounded-md bg-bg-secondary border border-border-custom/50 text-[10px] text-text-primary font-semibold">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+              <button autoFocus onClick={() => setActiveProject(null)} aria-label={t.projects.closeDetails} className="p-2 shrink-0 rounded-lg border border-border-custom cursor-pointer hover:bg-bg-secondary"><X className="size-5" /></button>
+            </div>
+            <div className="p-5 sm:p-6 space-y-6">
+              <p className="text-text-secondary leading-relaxed">{activeProject.longDescription[locale]}</p>
+              <div className="grid sm:grid-cols-2 gap-6">
+                <div><h4 className="font-semibold mb-2">{t.projects.details.challenge}</h4><p className="text-sm text-text-secondary leading-relaxed">{activeProject.challenges[locale]}</p></div>
+                <div><h4 className="font-semibold mb-2">{t.projects.details.role}</h4><p className="text-sm text-text-secondary leading-relaxed">{activeProject.myRole[locale]}</p></div>
               </div>
-
-              {/* Action buttons footer */}
-              <div className="border-t border-border-custom/50 p-4 bg-bg-secondary flex justify-between items-center gap-4">
-                <Button
-                  size="sm"
-                  variant="outline"
-                  onClick={() => setActiveDetailProject(null)}
-                  className="cursor-pointer text-xs"
-                >
-                  {t.projects.closeDetails}
-                </Button>
-
-                <div className="flex items-center gap-2">
-                  {detailProjectObj.githubUrl && (
-                    <a
-                      href={detailProjectObj.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Button size="sm" variant="outline" className="gap-1.5 text-xs cursor-pointer">
-                        <Github className="w-3.5 h-3.5" />
-                        GitHub
-                      </Button>
-                    </a>
-                  )}
-                  {detailProjectObj.demoUrl && (
-                    <a
-                      href={detailProjectObj.demoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Button size="sm" className="gap-1.5 text-xs cursor-pointer">
-                        <ExternalLink className="w-3.5 h-3.5" />
-                        Demo
-                      </Button>
-                    </a>
-                  )}
-                </div>
+              <div>
+                <h4 className="font-semibold mb-3">{t.projects.details.highlights}</h4>
+                <ul className="list-disc pl-5 space-y-2 text-sm text-text-secondary leading-relaxed">{activeProject.highlights[locale].map(item => <li key={item}>{item}</li>)}</ul>
               </div>
-            </motion.div>
+              {activeProject.technologies.length > 0 && <div><h4 className="font-semibold mb-3">{t.projects.technologies}</h4><div className="flex flex-wrap gap-2">{activeProject.technologies.map(item => <span key={item} className="info-badge text-xs">{item}</span>)}</div></div>}
+              <div className="border-t border-border-custom pt-4 flex flex-wrap gap-4 items-center justify-between">
+                {sourceLabel(activeProject) && <span className="text-sm text-text-secondary">{sourceLabel(activeProject)}</span>}
+                {links(activeProject)}
+              </div>
+            </div>
           </div>
         )}
-      </AnimatePresence>
+      </dialog>
     </section>
   );
 }

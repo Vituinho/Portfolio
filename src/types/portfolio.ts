@@ -51,20 +51,23 @@ export interface Project {
     en: string;
     pt: string;
   };
-  image: string;
+  image?: string;
   galleryImages?: string[];
   technologies: string[];
   category: string;
+  kind?: 'professional' | 'personal';
+  source?: 'private' | 'open';
+  coverLabel?: { en: string; pt: string };
   githubUrl?: string;
   demoUrl?: string;
   featured: boolean;
-  status: 'completed' | 'in-progress';
-  year: number;
-  duration: {
+  status?: 'completed' | 'in-progress' | 'live';
+  year?: number;
+  duration?: {
     en: string;
     pt: string;
   };
-  teamSize: number;
+  teamSize?: number;
   myRole: {
     en: string;
     pt: string;
@@ -77,7 +80,7 @@ export interface Project {
     en: string;
     pt: string;
   };
-  lessonsLearned: {
+  lessonsLearned?: {
     en: string;
     pt: string;
   };
