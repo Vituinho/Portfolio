@@ -9,6 +9,7 @@ import { ArrowUpRight, Github, X, ScanBarcode, Ticket, Keyboard, ShoppingBag, Bu
 import Image from 'next/image';
 
 const coverIcons = { 'givova-ticketing': Ticket, 'givova-coleta': ScanBarcode, keyforge: Keyboard, 'gvv-parana': ShoppingBag };
+const featuredOrder = ['givova-website', 'gvv-parana', 'givova-coleta', 'keyforge'];
 
 function ProjectCover({ project, locale }: { project: Project; locale: 'en' | 'pt' }) {
   const Icon = coverIcons[project.id as keyof typeof coverIcons] ?? Building2;
@@ -40,7 +41,7 @@ export default function Projects() {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const technologies = Array.from(new Set(projectsData.flatMap(p => p.technologies)));
   const filtered = projectsData.filter(p => (kind === 'all' || p.kind === kind) && (tech === 'all' || p.technologies.includes(tech)));
-  const featured = filtered.filter(p => p.featured);
+  const featured = filtered.filter(p => p.featured).sort((a, b) => featuredOrder.indexOf(a.id) - featuredOrder.indexOf(b.id));
   const more = filtered.filter(p => !p.featured);
   const filtering = kind !== 'all' || tech !== 'all';
 
@@ -59,7 +60,7 @@ export default function Projects() {
   }, [activeProject]);
 
   const sourceLabel = (project: Project) => project.source === 'private'
-    ? t.projects.privateSource : project.source === 'open' ? t.projects.openSource : null;
+    ? t.projects.privateSource : project.source === 'public' ? t.projects.publicSource : project.source === 'open' ? t.projects.openSource : null;
   const links = (project: Project) => (
     <div className="flex gap-3 text-sm">
       {project.githubUrl && <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 hover:underline"><Github className="size-4" />{t.projects.githubLink}</a>}

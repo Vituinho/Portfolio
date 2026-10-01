@@ -14,7 +14,10 @@ export const projectsData: Project[] = [
     },
     coverLabel: { en: 'Requests → Workflow → Resolution', pt: 'Solicitações → Atendimento → Resolução' },
     technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Python', 'FastAPI', 'SQLAlchemy', 'PostgreSQL'],
-    category: 'Business Systems', kind: 'professional', source: 'private', featured: true,
+    coreTechnologies: ['Next.js', 'TypeScript', 'FastAPI', 'PostgreSQL'],
+    categoryLabel: { en: 'Business Systems', pt: 'Sistemas de Negócio' },
+    category: 'Business Systems', kind: 'professional', source: 'public', featured: false,
+    githubUrl: 'https://github.com/Vituinho/SistemaChamadosTI',
     myRole: { en: 'Software development', pt: 'Desenvolvimento de software' },
     highlights: {
       en: ['Ticket creation, tracking and a dedicated technician area.', 'Authentication, notifications and automatic status updates.', 'Production-oriented architecture with security-conscious implementation.'],
@@ -27,7 +30,7 @@ export const projectsData: Project[] = [
   },
   {
     id: 'givova-coleta', slug: 'givova-coleta',
-    title: { en: 'Givova Coleta / Windows CE Barcode Reader', pt: 'Givova Coleta / Leitor de Código de Barras Windows CE' },
+    title: { en: 'Givova Coleta', pt: 'Givova Coleta' },
     description: {
       en: 'Offline-first barcode collection connecting legacy Windows CE handhelds to a modern backend and admin panel.',
       pt: 'Coleta de códigos de barras com operação offline, conectando coletores Windows CE a um backend e painel administrativo modernos.'
@@ -37,7 +40,9 @@ export const projectsData: Project[] = [
       pt: 'Um cliente C# WinForms em .NET Compact Framework 3.5 coleta leituras em dispositivos Windows CE. Uma fila e um registro local persistentes preservam os dados offline e sincronizam com um backend Python/FastAPI e PostgreSQL. Um painel administrativo Next.js completa o sistema, integrando equipamentos legados a ferramentas modernas de negócio.'
     },
     coverLabel: { en: 'Scan → Persist → Synchronize', pt: 'Coletar → Persistir → Sincronizar' },
-    technologies: ['C#', 'WinForms', '.NET Compact Framework 3.5', 'Windows CE', 'Python', 'FastAPI', 'PostgreSQL', 'Next.js'],
+    technologies: ['C#', 'WinForms', '.NET Compact Framework 3.5', 'Windows CE', 'Python', 'FastAPI', 'PostgreSQL', 'Next.js', 'TypeScript'],
+    coreTechnologies: ['C#', 'Windows CE', 'FastAPI', 'PostgreSQL', 'Next.js'],
+    categoryLabel: { en: 'Software Engineering · Legacy Integration', pt: 'Engenharia de Software · Integração Legada' },
     category: 'Systems Integration', kind: 'professional', source: 'private', featured: true,
     myRole: { en: 'Client, backend and admin panel development', pt: 'Desenvolvimento do cliente, backend e painel administrativo' },
     highlights: {
@@ -62,7 +67,10 @@ export const projectsData: Project[] = [
     },
     coverLabel: { en: 'Type → Progress → Compete', pt: 'Digitar → Evoluir → Competir' },
     technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Supabase', 'PostgreSQL'],
-    category: 'Realtime Systems', kind: 'personal', featured: true,
+    coreTechnologies: ['Next.js', 'TypeScript', 'Supabase', 'PostgreSQL'],
+    categoryLabel: { en: 'Software Engineering · Realtime Systems', pt: 'Engenharia de Software · Sistemas em Tempo Real' },
+    category: 'Realtime Systems', kind: 'personal', source: 'public', featured: true,
+    githubUrl: 'https://github.com/Vituinho/KeyForge',
     myRole: { en: 'Full-stack development and game systems', pt: 'Desenvolvimento full stack e sistemas de jogo' },
     highlights: {
       en: ['Typing progression and performance statistics.', 'Realtime synchronization and multiplayer/PvP architecture.', 'Game systems and internationalization.'],
@@ -86,6 +94,7 @@ export const projectsData: Project[] = [
     },
     coverLabel: { en: 'Catalog → Checkout → Orders', pt: 'Catálogo → Checkout → Pedidos' },
     technologies: [], category: 'E-commerce', kind: 'professional', source: 'private', featured: true,
+    categoryLabel: { en: 'E-commerce · Business Systems', pt: 'E-commerce · Sistemas de Negócio' },
     myRole: { en: 'E-commerce development', pt: 'Desenvolvimento de e-commerce' },
     highlights: {
       en: ['Product catalog, variants and inventory.', 'Cart, checkout, orders and payment integration.', 'Admin area and responsive storefront.'],
@@ -100,15 +109,16 @@ export const projectsData: Project[] = [
     id: 'givova-website', slug: 'givova-website',
     title: { en: 'Givova Transportes Website', pt: 'Site da Givova Transportes' },
     description: {
-      en: 'An institutional website presenting the company and its services through a responsive corporate interface.',
-      pt: 'Site institucional que apresenta a empresa e seus serviços em uma interface corporativa responsiva.'
+      en: 'A corporate transportation and logistics website with clear service information and a responsive interface.',
+      pt: 'Site corporativo de transporte e logística com informações claras sobre serviços e uma interface responsiva.'
     },
     longDescription: {
-      en: 'A corporate website focused on a professional digital presence for Givova Transportes. The modern frontend organizes company and service information with a responsive interface for desktop and mobile.',
-      pt: 'Site corporativo voltado à presença digital profissional da Givova Transportes. O frontend moderno organiza informações da empresa e dos serviços com uma interface responsiva para desktop e dispositivos móveis.'
+      en: 'A corporate website focused on a professional digital presence for Givova Transportes. The modern frontend organizes transportation, logistics, company and service information with a responsive interface and clear navigation for desktop and mobile.',
+      pt: 'Site corporativo voltado à presença digital profissional da Givova Transportes. O frontend moderno organiza informações de transporte, logística, empresa e serviços com uma interface responsiva e navegação clara para desktop e dispositivos móveis.'
     },
     coverLabel: { en: 'Company → Services → Contact', pt: 'Empresa → Serviços → Contato' },
-    technologies: [], category: 'Corporate Website', kind: 'professional', source: 'private', featured: false,
+    technologies: [], category: 'Corporate Website', kind: 'professional', source: 'private', featured: true,
+    categoryLabel: { en: 'Corporate Website · Transport & Logistics', pt: 'Site Corporativo · Transporte e Logística' },
     myRole: { en: 'Website development', pt: 'Desenvolvimento do site' },
     highlights: {
       en: ['Professional corporate presence.', 'Company and services presentation.', 'Responsive UI and modern frontend.'],

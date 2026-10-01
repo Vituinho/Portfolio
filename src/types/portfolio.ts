@@ -56,9 +56,11 @@ export interface Project {
   image?: string;
   galleryImages?: string[];
   technologies: string[];
+  coreTechnologies?: string[];
   category: string;
+  categoryLabel?: { en: string; pt: string };
   kind?: 'professional' | 'personal';
-  source?: 'private' | 'open';
+  source?: 'private' | 'open' | 'public';
   coverLabel?: { en: string; pt: string };
   githubUrl?: string;
   demoUrl?: string;

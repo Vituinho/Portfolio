@@ -49,6 +49,7 @@ export const pt: Translations = {
     professionalFilter: "Profissionais",
     personalFilter: "Pessoais",
     privateSource: "Código Privado",
+    publicSource: "Código Público",
     openSource: "Código Aberto",
     statusLive: "Online",
     moreProjects: "Mais Projetos",

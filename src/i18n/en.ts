@@ -47,6 +47,7 @@ export const en = {
     professionalFilter: "Professional",
     personalFilter: "Personal",
     privateSource: "Private Source",
+    publicSource: "Public Code",
     openSource: "Open Source",
     statusLive: "Live",
     moreProjects: "More Projects",
