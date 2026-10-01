@@ -116,6 +116,9 @@ export interface Experience {
 
 export interface Education {
   institution: string;
+  image?: string;
+  imageAlt?: { en: string; pt: string };
+  durationMonths?: number;
   course: {
     en: string;
     pt: string;

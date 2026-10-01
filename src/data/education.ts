@@ -3,6 +3,7 @@ import { Education } from '../types/portfolio';
 export const educationData: Education[] = [
   {
     institution: "Princess Margaret Secondary School",
+    durationMonths: 6,
     course: {
       en: "International High School Exchange",
       pt: "Intercâmbio Internacional de Ensino Médio"
@@ -14,8 +15,8 @@ export const educationData: Education[] = [
     startDate: "2026",
     endDate: "2026",
     description: {
-      en: "In 2026, I lived in Penticton, British Columbia, and attended Princess Margaret Secondary School through the Ganhando o Mundo program. Studying in an English-speaking Canadian high school developed my communication, independence and adaptability.",
-      pt: "Em 2026, morei em Penticton, British Columbia, e estudei na Princess Margaret Secondary School pelo programa Ganhando o Mundo. A rotina em uma escola canadense, em um ambiente de língua inglesa, desenvolveu minha comunicação, independência e adaptabilidade."
+      en: "I lived and studied in Penticton, British Columbia, for six months through Ganhando o Mundo. Attending a Canadian high school in an English-speaking environment introduced me to a different education system and strengthened my communication, independence and adaptability.",
+      pt: "Morei e estudei em Penticton, British Columbia, durante seis meses pelo programa Ganhando o Mundo. A rotina em uma escola canadense, em um ambiente de língua inglesa, me apresentou a um sistema educacional diferente e fortaleceu minha comunicação, independência e adaptabilidade."
     }
   }
 ];
