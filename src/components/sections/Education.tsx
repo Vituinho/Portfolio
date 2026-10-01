@@ -20,7 +20,7 @@ export default function Education() {
       <div className="grid lg:grid-cols-2 rounded-2xl overflow-hidden border border-border-custom bg-bg-card">
         <div className="bg-bg-secondary flex flex-col">
           {education.image ? (
-            <figure className="relative aspect-[4/3] lg:aspect-auto lg:flex-1 lg:min-h-80">
+            <figure className="relative aspect-[4/5] max-h-[36rem] lg:max-h-none lg:aspect-auto lg:flex-1 lg:min-h-80">
               <Image src={education.image} alt={education.imageAlt?.[locale] ?? (pt ? 'Victor Emanuel durante o intercâmbio no Canadá' : 'Victor Emanuel during his exchange in Canada')} fill sizes="(max-width: 1023px) 100vw, 560px" quality={90} className="object-cover" />
             </figure>
           ) : (
