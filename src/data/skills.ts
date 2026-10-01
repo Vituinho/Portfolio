@@ -1,94 +1,31 @@
 import { Skill } from '../types/portfolio';
 
 export const skillsData: Skill[] = [
-  // Languages
-  {
-    name: "JavaScript",
-    icon: "Code2",
-    category: "frontend"
-  },
-  {
-    name: "TypeScript",
-    icon: "Shield",
-    category: "frontend"
-  },
-  {
-    name: "PHP",
-    icon: "Code",
-    category: "backend"
-  },
-  {
-    name: "HTML5",
-    icon: "FileCode",
-    category: "frontend"
-  },
-  {
-    name: "CSS3",
-    icon: "Palette",
-    category: "frontend"
-  },
-
-  {
-    name: "React",
-    icon: "Atom",
-    category: "frameworks"
-  },
-  {
-    name: "Next.js",
-    icon: "Cpu",
-    category: "frameworks"
-  },
-  {
-    name: "Tailwind CSS",
-    icon: "Wind",
-    category: "frameworks"
-  },
-  {
-    name: "Bootstrap",
-    icon: "Layout",
-    category: "frameworks"
-  },
-
-  {
-    name: "Laravel",
-    icon: "Server",
-    category: "frameworks"
-  },
-  {
-    name: "Node.js",
-    icon: "ServerCog",
-    category: "backend"
-  },
-
-  {
-    name: "MySQL",
-    icon: "Database",
-    category: "databases"
-  },
-  {
-    name: "PostgreSQL",
-    icon: "DatabaseBackup",
-    category: "databases"
-  },
-
-  {
-    name: "Git",
-    icon: "GitBranch",
-    category: "tools"
-  },
-  {
-    name: "GitHub",
-    icon: "Github",
-    category: "tools"
-  },
-  {
-    name: "Postman",
-    icon: "Send",
-    category: "tools"
-  },
-  {
-    name: "npm",
-    icon: "Package",
-    category: "tools"
-  }
+  { name: 'Next.js', icon: 'Cpu', category: 'frontend' },
+  { name: 'React', icon: 'Atom', category: 'frontend' },
+  { name: 'TypeScript', icon: 'Code2', category: 'frontend' },
+  { name: 'Tailwind CSS', icon: 'Wind', category: 'frontend' },
+  { name: 'JavaScript', icon: 'Code2', category: 'frontend', supporting: true },
+  { name: 'HTML / CSS', icon: 'FileCode', category: 'frontend', supporting: true },
+  { name: 'Bootstrap', icon: 'Layout', category: 'frontend', supporting: true },
+  { name: 'Python', icon: 'Code2', category: 'backend' },
+  { name: 'FastAPI', icon: 'Server', category: 'backend' },
+  { name: 'Laravel', icon: 'Server', category: 'backend' },
+  { name: 'Node.js', icon: 'Server', category: 'backend' },
+  { name: 'PHP', icon: 'Code2', category: 'backend' },
+  { name: 'PostgreSQL', icon: 'Database', category: 'databases' },
+  { name: 'MySQL', icon: 'Database', category: 'databases' },
+  { name: 'Supabase', icon: 'Database', category: 'databases' },
+  { name: 'Git', icon: 'GitBranch', category: 'tools' },
+  { name: 'GitHub', icon: 'Github', category: 'tools' },
+  { name: 'Docker', icon: 'Container', category: 'tools' },
+  { name: 'Railway', icon: 'Cloud', category: 'tools' },
+  { name: 'Vercel', icon: 'Cloud', category: 'tools' },
+  { name: 'Postman', icon: 'Send', category: 'tools' },
+  { name: 'C#', icon: 'Code2', category: 'other' },
+  { name: 'Windows CE', icon: 'Cpu', category: 'other' },
+  { name: 'REST APIs', icon: 'Server', category: 'other' },
+  { name: 'Automation', localizedName: { en: 'Automation', pt: 'Automação' }, icon: 'Workflow', category: 'other' },
+  { name: 'SQL', icon: 'Database', category: 'other' },
+  { name: 'Legacy systems integration', localizedName: { en: 'Legacy systems integration', pt: 'Integração de sistemas legados' }, icon: 'Workflow', category: 'other' }
 ];

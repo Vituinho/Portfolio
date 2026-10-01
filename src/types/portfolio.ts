@@ -34,6 +34,8 @@ export interface Skill {
   name: string;
   icon: string;
   category: SkillCategory;
+  supporting?: boolean;
+  localizedName?: { en: string; pt: string };
 }
 
 export interface Project {

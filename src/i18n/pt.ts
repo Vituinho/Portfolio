@@ -26,14 +26,15 @@ export const pt: Translations = {
   },
   skills: {
     title: "Habilidades Técnicas",
+    supporting: "Também utilizo",
     categories: {
       frontend: "Desenvolvimento Frontend",
       backend: "Desenvolvimento Backend",
       languages: "Linguagens de Programação",
-      databases: "Bancos de Dados",
-      tools: "Ferramentas & DevOps",
+      databases: "Bancos de Dados e Serviços de Backend",
+      tools: "Infraestrutura, Deploy e Ferramentas",
       frameworks: "Bibliotecas & Frameworks",
-      other: "Outras Tecnologias"
+      other: "Engenharia e Integração"
     },
     years: "anos",
     year: "ano",

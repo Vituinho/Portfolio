@@ -24,14 +24,15 @@ export const en = {
   },
   skills: {
     title: "Technical Skills",
+    supporting: "Also used",
     categories: {
       frontend: "Frontend Development",
       backend: "Backend Development",
       languages: "Programming Languages",
-      databases: "Databases",
-      tools: "Tools & DevOps",
+      databases: "Databases & Backend Services",
+      tools: "Infrastructure, Deployment & Tools",
       frameworks: "Libraries & Frameworks",
-      other: "Other Technologies"
+      other: "Engineering & Integration"
     },
     years: "years",
     year: "year",
