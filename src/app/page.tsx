@@ -14,13 +14,13 @@ export default function Home() {
   return (
     <div className="flex flex-col w-full">
       <Hero />
-      <About />
-      <Skills />
       <Projects />
       <Experience />
+      <Skills />
+      <About />
       <Education />
-      <Recommendations />
       <Languages />
+      <Recommendations />
       <Books />
       <Contact />
     </div>

@@ -3,30 +3,29 @@
 import React, { useState, useEffect } from 'react';
 import { useI18n } from '@/i18n/context';
 import { useTheme } from 'next-themes';
-import { Menu, X, Sun, Moon, Laptop, Globe } from 'lucide-react';
+import { Menu, X, Sun, Moon, Globe } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
-const SECTION_IDS = ['about', 'skills', 'projects', 'experience', 'education', 'recommendations', 'languages', 'books', 'contact'];
+const SECTION_IDS = ['hero', 'projects', 'experience', 'skills', 'about', 'education', 'languages', 'recommendations', 'contact'];
 
 export default function Navbar() {
   const { locale, t, setLanguage } = useI18n();
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('about');
+  const [activeSection, setActiveSection] = useState('hero');
   const [scrollProgress, setScrollProgress] = useState(0);
   const [scrolled, setScrolled] = useState(false);
 
   const navItems = [
-    { id: 'about', label: t.nav.about },
-    { id: 'skills', label: t.nav.skills },
     { id: 'projects', label: t.nav.projects },
     { id: 'experience', label: t.nav.experience },
+    { id: 'skills', label: t.nav.skills },
+    { id: 'about', label: t.nav.about },
     { id: 'education', label: t.nav.education },
-    { id: 'recommendations', label: t.nav.recommendations },
-    { id: 'languages', label: t.nav.languages },
-    { id: 'books', label: t.nav.books },
+    { id: 'languages', label: t.nav.languages, secondary: true },
+    { id: 'recommendations', label: t.nav.recommendations, secondary: true },
     { id: 'contact', label: t.nav.contact }
   ];
 
@@ -87,7 +86,7 @@ export default function Navbar() {
       const elementPosition = element.getBoundingClientRect().top + window.scrollY;
       window.scrollTo({
         top: elementPosition - offset,
-        behavior: 'smooth'
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
       });
     }
   };
@@ -112,19 +111,20 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
         <a 
-          href="#about" 
-          onClick={(e) => handleNavClick(e, 'about')}
+          href="#hero" 
+          onClick={(e) => handleNavClick(e, 'hero')}
           className="font-bold text-lg tracking-tight hover:opacity-85 transition-opacity"
         >
           VE<span className="text-accent-custom">.</span>
         </a>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-6">
-          {navItems.map((item) => (
+        <nav aria-label={locale === 'pt' ? 'Navegação principal' : 'Main navigation'} className="hidden lg:flex items-center gap-5">
+          {navItems.filter(item => !item.secondary).map((item) => (
             <a
               key={item.id}
               href={`#${item.id}`}
+              aria-current={activeSection === item.id ? 'location' : undefined}
               onClick={(e) => handleNavClick(e, item.id)}
               className={cn(
                 "text-sm font-medium transition-colors hover:text-accent-custom relative py-1",
@@ -151,7 +151,7 @@ export default function Navbar() {
           <button
             onClick={() => setLanguage(locale === 'en' ? 'pt' : 'en')}
             className="p-2 rounded-lg text-text-secondary hover:text-accent-custom hover:bg-bg-secondary transition-all cursor-pointer flex items-center gap-1.5 text-sm"
-            aria-label="Switch Language"
+            aria-label={locale === 'pt' ? 'Switch to English' : 'Mudar para português'}
           >
             <Globe className="w-4 h-4" />
             <span className="font-semibold uppercase text-xs">{locale}</span>
@@ -159,18 +159,20 @@ export default function Navbar() {
 
           {/* Theme Selector Toggle */}
           <button
-            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
             className="p-2 rounded-lg text-text-secondary hover:text-accent-custom hover:bg-bg-secondary transition-all cursor-pointer"
-            aria-label="Toggle Theme"
+            aria-label={locale === 'pt' ? 'Alternar tema' : 'Toggle theme'}
           >
-            {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+            {resolvedTheme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
           </button>
 
           {/* Mobile Hamburger Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-2 rounded-lg text-text-secondary hover:text-accent-custom hover:bg-bg-secondary transition-all lg:hidden cursor-pointer"
-            aria-label="Toggle Mobile Menu"
+            aria-label={locale === 'pt' ? 'Alternar menu' : 'Toggle menu'}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-navigation"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -181,10 +183,11 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
+            id="mobile-navigation"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden w-full bg-bg-primary border-b border-border-custom px-4 py-6 flex flex-col gap-4 overflow-hidden"
+            className="lg:hidden w-full bg-bg-primary border-b border-border-custom px-4 py-4 flex flex-col gap-1 max-h-[calc(100dvh-4rem)] overflow-y-auto"
           >
             {navItems.map((item) => (
               <a
