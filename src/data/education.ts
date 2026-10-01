@@ -4,8 +4,8 @@ export const educationData: Education[] = [
   {
     institution: "Princess Margaret Secondary School",
     course: {
-      en: "High School Exchange Program",
-      pt: "Programa de Intercâmbio do Ensino Médio"
+      en: "International High School Exchange",
+      pt: "Intercâmbio Internacional de Ensino Médio"
     },
     degree: {
       en: "International Exchange",
@@ -14,8 +14,8 @@ export const educationData: Education[] = [
     startDate: "2026",
     endDate: "2026",
     description: {
-      en: "Completed a six-month academic exchange program in Canada, improving English proficiency while studying in an international educational environment.",
-      pt: "Realizou um intercâmbio acadêmico de seis meses no Canadá, aprimorando a fluência em inglês enquanto estudava em um ambiente educacional internacional."
+      en: "In 2026, I lived in Penticton, British Columbia, and attended Princess Margaret Secondary School through the Ganhando o Mundo program. Studying in an English-speaking Canadian high school developed my communication, independence and adaptability.",
+      pt: "Em 2026, morei em Penticton, British Columbia, e estudei na Princess Margaret Secondary School pelo programa Ganhando o Mundo. A rotina em uma escola canadense, em um ambiente de língua inglesa, desenvolveu minha comunicação, independência e adaptabilidade."
     }
   }
 ];

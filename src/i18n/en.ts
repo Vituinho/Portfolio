@@ -4,7 +4,7 @@ export const en = {
     skills: "Skills",
     projects: "Projects",
     experience: "Experience",
-    education: "Education",
+    education: "International",
     recommendations: "Recommendations",
     languages: "Languages",
     books: "Books",
@@ -69,7 +69,7 @@ export const en = {
     }
   },
   education: {
-    title: "Education",
+    title: "International Experience",
     grade: "Grade"
   },
   recommendations: {

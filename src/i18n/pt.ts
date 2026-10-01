@@ -6,7 +6,7 @@ export const pt: Translations = {
     skills: "Habilidades",
     projects: "Projetos",
     experience: "Experiência",
-    education: "Formação",
+    education: "Internacional",
     recommendations: "Recomendações",
     languages: "Idiomas",
     books: "Livros",
@@ -71,7 +71,7 @@ export const pt: Translations = {
     }
   },
   education: {
-    title: "Formação Acadêmica",
+    title: "Experiência Internacional",
     grade: "Nota/Média"
   },
   recommendations: {

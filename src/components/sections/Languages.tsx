@@ -55,19 +55,6 @@ export default function Languages() {
                   </span>
                 </div>
 
-                {/* Progress bar */}
-                <div className="flex flex-col gap-1.5 mt-2">
-                  <div className="w-full h-2 bg-bg-secondary rounded-full overflow-hidden border border-border-custom/30">
-                    <motion.div 
-                      className="h-full bg-accent-custom rounded-full"
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${lang.progress}%` }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1, ease: "easeOut" }}
-                    />
-                  </div>
-                </div>
-
                 {/* Certificate verified link */}
                 {lang.certificate && (
                   <div className="pt-2 border-t border-border-custom/30 mt-1 flex">
@@ -78,7 +65,7 @@ export default function Languages() {
                       className="inline-flex items-center gap-1.5 text-xs font-semibold text-accent-custom hover:underline"
                     >
                       <Award className="w-3.5 h-3.5" />
-                      View Verification Certificate
+                      {locale === 'pt' ? 'Ver certificado EF SET' : 'View EF SET certificate'}
                       <ExternalLink className="w-3 h-3" />
                     </a>
                   </div>
