@@ -7,7 +7,7 @@ import Footer from "@/components/layout/Footer";
 
 const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-inter",
 });
 
 const outfit = Outfit({
