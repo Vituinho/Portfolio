@@ -3,10 +3,10 @@ import { Education } from '../types/portfolio';
 export const educationData: Education[] = [
   {
     institution: "Princess Margaret Secondary School",
-    image: '/images/international/canada-exchange.webp',
+    image: '/images/international/canada-exchange-collage.png',
     imageAlt: {
-      en: 'Victor Emanuel sitting on a rock overlooking the Canadian landscape during his 2026 exchange',
-      pt: 'Victor Emanuel sentado em uma rocha, observando a paisagem canadense durante o intercâmbio de 2026'
+      en: 'Canada exchange collage showing landscapes, school life, friendships and host family moments.',
+      pt: 'Colagem do intercâmbio no Canadá com momentos de paisagens, escola, amizades e família anfitriã.'
     },
     durationMonths: 6,
     course: {
