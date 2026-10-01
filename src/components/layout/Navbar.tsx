@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useI18n } from '@/i18n/context';
 import { useTheme } from 'next-themes';
 import { Menu, X, Sun, Moon, Globe } from 'lucide-react';
@@ -17,6 +17,7 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState('hero');
   const [scrollProgress, setScrollProgress] = useState(0);
   const [scrolled, setScrolled] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   const navItems = [
     { id: 'projects', label: t.nav.projects },
@@ -95,25 +96,31 @@ export default function Navbar() {
 
   return (
     <header
+      onKeyDown={e => {
+        if (e.key === 'Escape' && mobileMenuOpen) {
+          setMobileMenuOpen(false);
+          menuButtonRef.current?.focus();
+        }
+      }}
       className={cn(
-        "sticky top-0 z-50 w-full transition-all duration-300 border-b",
+        "sticky top-0 z-50 w-full transition-colors duration-200 border-b",
         scrolled 
-          ? "bg-bg-primary/80 backdrop-blur-md border-border-custom" 
+          ? "bg-bg-primary/95 backdrop-blur-sm border-border-custom" 
           : "bg-transparent border-transparent"
       )}
     >
       {/* Scroll Progress Bar */}
       <div 
-        className="h-1 bg-accent-custom origin-left transition-all duration-100 absolute top-0 left-0"
+        className="h-px bg-accent-custom origin-left transition-[width] duration-100 absolute top-0 left-0"
         style={{ width: `${scrollProgress}%` }}
       />
 
-      <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
         {/* Logo */}
         <a 
           href="#hero"
           onClick={(e) => handleNavClick(e, 'hero')}
-          className="font-bold text-lg tracking-tight hover:opacity-85 transition-opacity"
+          className="font-semibold text-lg tracking-tight min-h-11 inline-flex items-center hover:opacity-85 transition-opacity"
         >
           VE<span className="text-accent-custom">.</span>
         </a>
@@ -127,9 +134,9 @@ export default function Navbar() {
               aria-current={activeSection === item.id ? 'location' : undefined}
               onClick={(e) => handleNavClick(e, item.id)}
               className={cn(
-                "text-sm font-medium transition-colors hover:text-accent-custom relative py-1",
+                "text-sm font-medium transition-colors hover:text-accent-custom relative py-3",
                 activeSection === item.id 
-                  ? "text-accent-custom font-semibold" 
+                  ? "text-accent-custom" 
                   : "text-text-secondary"
               )}
             >
@@ -146,11 +153,11 @@ export default function Navbar() {
         </nav>
 
         {/* Actions Controls (Theme + Lang + Hamburger) */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-1 sm:gap-2">
           {/* Language Switcher */}
           <button
             onClick={() => setLanguage(locale === 'en' ? 'pt' : 'en')}
-            className="p-2 rounded-lg text-text-secondary hover:text-accent-custom hover:bg-bg-secondary transition-all cursor-pointer flex items-center gap-1.5 text-sm"
+            className="min-h-11 px-3 rounded-lg text-text-secondary hover:text-accent-custom hover:bg-bg-secondary transition-colors cursor-pointer flex items-center gap-2 text-sm"
             aria-label={locale === 'pt' ? 'Switch to English' : 'Mudar para português'}
           >
             <Globe className="w-4 h-4" />
@@ -160,7 +167,7 @@ export default function Navbar() {
           {/* Theme Selector Toggle */}
           <button
             onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
-            className="p-2 rounded-lg text-text-secondary hover:text-accent-custom hover:bg-bg-secondary transition-all cursor-pointer"
+            className="size-11 inline-flex items-center justify-center rounded-lg text-text-secondary hover:text-accent-custom hover:bg-bg-secondary transition-colors cursor-pointer"
             aria-label={locale === 'pt' ? 'Alternar tema' : 'Toggle theme'}
           >
             {resolvedTheme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
@@ -168,8 +175,9 @@ export default function Navbar() {
 
           {/* Mobile Hamburger Button */}
           <button
+            ref={menuButtonRef}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-lg text-text-secondary hover:text-accent-custom hover:bg-bg-secondary transition-all lg:hidden cursor-pointer"
+            className="size-11 inline-flex items-center justify-center rounded-lg text-text-secondary hover:text-accent-custom hover:bg-bg-secondary transition-colors lg:hidden cursor-pointer"
             aria-label={locale === 'pt' ? 'Alternar menu' : 'Toggle menu'}
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-navigation"
@@ -182,20 +190,23 @@ export default function Navbar() {
       {/* Mobile Menu Panel */}
       <AnimatePresence>
         {mobileMenuOpen && (
-          <motion.div
+          <motion.nav
             id="mobile-navigation"
+            aria-label={locale === 'pt' ? 'Navegação móvel' : 'Mobile navigation'}
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden w-full bg-bg-primary border-b border-border-custom px-4 py-4 flex flex-col gap-1 max-h-[calc(100dvh-4rem)] overflow-y-auto"
+            transition={{ duration: 0.15 }}
+            className="absolute top-full inset-x-0 lg:hidden bg-bg-primary border-b border-border-custom px-4 sm:px-6 py-3 flex flex-col gap-1 max-h-[calc(100dvh-4rem)] overflow-y-auto shadow-sm"
           >
             {navItems.map((item) => (
               <a
                 key={item.id}
                 href={`#${item.id}`}
+                aria-current={activeSection === item.id ? 'location' : undefined}
                 onClick={(e) => handleNavClick(e, item.id)}
                 className={cn(
-                  "text-base font-medium py-2 px-3 rounded-lg transition-colors",
+                  "min-h-11 text-sm font-medium py-3 px-3 rounded-lg transition-colors",
                   activeSection === item.id 
                     ? "bg-bg-secondary text-accent-custom font-semibold" 
                     : "text-text-secondary hover:bg-bg-secondary/50 hover:text-text-primary"
@@ -204,7 +215,7 @@ export default function Navbar() {
                 {item.label}
               </a>
             ))}
-          </motion.div>
+          </motion.nav>
         )}
       </AnimatePresence>
     </header>

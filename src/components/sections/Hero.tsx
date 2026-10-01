@@ -14,23 +14,23 @@ export default function Hero() {
     : ['Software Engineering', 'Full-Stack Development', 'Automation', 'Business Systems', 'IT Solutions'];
 
   return (
-    <section id="hero" className="px-4 py-16 sm:py-24 lg:py-28 max-w-6xl mx-auto">
-      <div className="grid gap-12 lg:grid-cols-[1.5fr_1fr] items-center">
-        <div>
+    <section id="hero" className="px-4 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-24 max-w-6xl mx-auto">
+      <div className="grid gap-8 sm:gap-10 lg:grid-cols-[1.5fr_1fr] items-center">
+        <div className="min-w-0">
           <p className="eyebrow mb-5">{pt ? 'Tecnologia aplicada a problemas reais' : 'Technology for real-world problems'}</p>
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-4">{profileData.name}</h1>
-          <p className="text-2xl sm:text-3xl font-semibold mb-6">{profileData.title[locale]}</p>
-          <p className="max-w-xl text-lg leading-relaxed text-text-secondary">{profileData.shortIntro[locale]}</p>
-          <ul className="flex flex-wrap gap-x-4 gap-y-2 my-6 text-xs text-text-secondary">
+          <h1 className="text-[clamp(2.5rem,5.5vw,4.5rem)] font-semibold leading-[1.05] tracking-[-0.04em] mb-4">{profileData.name}</h1>
+          <p className="text-xl sm:text-2xl lg:text-3xl font-medium mb-5">{profileData.title[locale]}</p>
+          <p className="max-w-[50ch] text-base sm:text-lg leading-relaxed text-text-secondary">{profileData.shortIntro[locale]}</p>
+          <ul className="flex flex-wrap gap-x-4 gap-y-2 my-6 text-xs leading-relaxed text-text-secondary">
             {areas.map(area => <li key={area}>{area}</li>)}
           </ul>
-          <div className="flex flex-wrap gap-3 mt-8">
-            <a href="#projects" className="action-link bg-accent-custom text-bg-primary hover:bg-accent-muted">{t.hero.ctaProjects}<ArrowRight className="size-4" /></a>
-            <a href="#contact" className="action-link border border-border-custom hover:bg-bg-secondary">{t.hero.ctaContact}</a>
-            <a href={profileData.cvUrl} download className="action-link text-text-secondary hover:bg-bg-secondary"><Download className="size-4" />{t.hero.downloadCV}</a>
+          <div className="flex flex-wrap gap-3 mt-7">
+            <a href="#projects" className="action-link flex-1 sm:flex-none bg-accent-custom text-bg-primary hover:bg-accent-muted">{t.hero.ctaProjects}<ArrowRight className="size-4" /></a>
+            <a href="#contact" className="action-link flex-1 sm:flex-none border border-border-custom hover:bg-bg-secondary">{t.hero.ctaContact}</a>
+            <a href={profileData.cvUrl} download className="action-link basis-full sm:basis-auto text-text-secondary hover:text-text-primary hover:bg-bg-secondary"><Download className="size-4" />{t.hero.downloadCV}</a>
           </div>
         </div>
-        <div className="rounded-2xl border border-border-custom bg-bg-secondary p-5 sm:p-6">
+        <div className="rounded-xl border border-border-custom bg-bg-card p-5 sm:p-6">
           <div className="flex items-center gap-4 pb-5 border-b border-border-custom">
             <div className="relative size-20 shrink-0 rounded-xl overflow-hidden">
               <Image src={profileData.avatarUrl} alt={t.hero.avatarAlt} fill priority sizes="80px" className="object-cover" />

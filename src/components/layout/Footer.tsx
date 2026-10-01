@@ -22,7 +22,7 @@ export default function Footer() {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
     });
   };
 
@@ -36,8 +36,8 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="w-full bg-bg-secondary border-t border-border-custom py-12 relative">
-      <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6">
+    <footer className="w-full bg-bg-secondary border-t border-border-custom py-10 relative">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Logo and Copyright */}
         <div className="text-center md:text-left">
           <p className="font-semibold text-text-primary text-base">
@@ -49,14 +49,14 @@ export default function Footer() {
         </div>
 
         {/* Social Icons */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           {socialLinks.map((link, idx) => (
             <a
               key={idx}
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-full border border-border-custom bg-bg-primary text-text-secondary hover:text-accent-custom hover:border-accent-custom hover:shadow-sm transition-all"
+              className="size-11 inline-flex items-center justify-center rounded-lg border border-border-custom bg-bg-primary text-text-secondary hover:text-accent-custom hover:border-text-secondary transition-colors"
               aria-label={link.label}
             >
               {link.icon}
@@ -68,8 +68,9 @@ export default function Footer() {
       {/* Back to top button */}
       <button
         onClick={scrollToTop}
+        tabIndex={showScrollTop ? 0 : -1}
         className={cn(
-          "fixed bottom-6 right-6 p-3 rounded-full bg-accent-custom text-bg-primary shadow-lg border border-transparent hover:bg-accent-muted transition-all duration-300 z-40 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent-custom/50",
+          "fixed bottom-4 right-4 sm:bottom-6 sm:right-6 size-11 inline-flex items-center justify-center rounded-lg bg-accent-custom text-bg-primary shadow-sm border border-transparent hover:bg-accent-muted transition-[opacity,transform,background-color] duration-200 z-40 cursor-pointer",
           showScrollTop 
             ? "translate-y-0 opacity-100 pointer-events-auto" 
             : "translate-y-4 opacity-0 pointer-events-none"
