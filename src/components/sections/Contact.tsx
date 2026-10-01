@@ -119,7 +119,7 @@ export default function Contact() {
         transition={{ duration: 0.3 }}
         className="w-full"
       >
-        <h2 className="section-title mb-3">
+        <h2 className="section-title mb-3!">
           {t.contact.title}
         </h2>
         <p className="text-base text-text-secondary max-w-2xl leading-relaxed mb-8">

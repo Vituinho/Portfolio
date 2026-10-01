@@ -105,7 +105,7 @@ export default function Navbar() {
       className={cn(
         "sticky top-0 z-50 w-full transition-colors duration-200 border-b",
         scrolled 
-          ? "bg-bg-primary/95 backdrop-blur-sm border-border-custom" 
+          ? "bg-bg-primary/95 backdrop-blur-sm border-border-custom"
           : "bg-transparent border-transparent"
       )}
     >
@@ -136,7 +136,7 @@ export default function Navbar() {
               className={cn(
                 "text-sm font-medium transition-colors hover:text-accent-custom relative py-3",
                 activeSection === item.id 
-                  ? "text-accent-custom" 
+                  ? "text-accent-custom"
                   : "text-text-secondary"
               )}
             >

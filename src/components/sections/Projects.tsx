@@ -74,7 +74,7 @@ export default function Projects() {
     <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
       {items.map(project => (
         <article key={project.id} className="min-w-0">
-          <Card className="overflow-hidden p-0 h-full flex flex-col">
+          <Card className="overflow-hidden p-0 sm:p-0 h-full flex flex-col">
             <ProjectCover project={project} locale={locale} />
             <div className="p-5 sm:p-6 flex flex-col flex-1">
               <h3 className="text-xl sm:text-2xl font-semibold mb-3 leading-snug tracking-tight">{project.title[locale]}</h3>
@@ -87,9 +87,9 @@ export default function Projects() {
               </div>
               <p className="text-xs text-text-secondary mb-3 leading-relaxed">{project.categoryLabel?.[locale] ?? project.category}</p>
               <p className="text-sm text-text-secondary leading-relaxed mb-4">{project.description[locale]}</p>
-              <div className="flex flex-wrap gap-1.5 mb-6">
+              {(project.coreTechnologies ?? project.technologies).length > 0 && <div className="flex flex-wrap gap-1.5 mb-6">
                 {(project.coreTechnologies ?? project.technologies.slice(0, 4)).map(item => <span key={item} className="tech-tag">{item}</span>)}
-              </div>
+              </div>}
               <div className="flex flex-wrap items-center justify-between gap-4 border-t border-border-custom pt-4 mt-auto">
                 <button onClick={() => setActiveProject(project)} aria-haspopup="dialog" aria-label={`${t.projects.viewDetails} — ${project.title[locale]}`} className="inline-flex items-center gap-2 text-sm font-medium cursor-pointer hover:underline underline-offset-4 min-h-11 rounded-md">
                   {t.projects.viewDetails}<ArrowUpRight className="size-4" />
@@ -108,7 +108,7 @@ export default function Projects() {
       <div className="flex flex-col gap-5 mb-8">
         <div>
           <p className="eyebrow mb-3">{t.projects.eyebrow}</p>
-          <h2 className="section-title mb-3">{t.projects.title}</h2>
+          <h2 className="section-title mb-3!">{t.projects.title}</h2>
           <p className="text-text-secondary max-w-2xl leading-relaxed">{t.projects.subtitle}</p>
         </div>
         <div className="flex flex-wrap items-center justify-between gap-4">

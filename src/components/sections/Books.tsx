@@ -61,7 +61,7 @@ export default function Books() {
               viewport={{ once: true }}
               transition={{ duration: 0.25, delay: idx * 0.05 }}
             >
-              <Card className="flex flex-col h-full overflow-hidden p-0">
+              <Card className="flex flex-col h-full overflow-hidden p-0 sm:p-0">
                 {/* Book Cover Container */}
                 <div className="relative aspect-[4/3] bg-bg-secondary border-b border-border-custom/40 select-none overflow-hidden group">
                   <Image
