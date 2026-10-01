@@ -3,6 +3,8 @@ import { Project } from '../types/portfolio';
 export const projectsData: Project[] = [
   {
     id: 'givova-ticketing', slug: 'givova-ticketing',
+    image: '/images/projects/sistema-chamados-ti.webp',
+    imageAlt: { en: 'Givova IT support homepage with ticket creation and tracking options', pt: 'Página inicial do suporte de TI da Givova com abertura e acompanhamento de chamados' },
     title: { en: 'IT Ticketing System — Givova', pt: 'Sistema de Chamados TI — Givova' },
     description: {
       en: 'An internal support platform that brings IT requests, technician workflows and status tracking into one place.',
@@ -56,6 +58,8 @@ export const projectsData: Project[] = [
   },
   {
     id: 'keyforge', slug: 'keyforge',
+    image: '/images/projects/keyforge.webp',
+    imageAlt: { en: 'KeyForge typing platform homepage with progression and game interface preview', pt: 'Página inicial do KeyForge com progressão e prévia da interface do jogo de digitação' },
     title: { en: 'KeyForge', pt: 'KeyForge' },
     description: {
       en: 'A modern typing platform combining progression, statistics and multiplayer game systems.',
@@ -83,6 +87,8 @@ export const projectsData: Project[] = [
   },
   {
     id: 'gvv-parana', slug: 'gvv-parana',
+    image: '/images/projects/gvv-parana.webp',
+    imageAlt: { en: 'GVV Paraná storefront homepage presenting sofas, mattresses and the shopping cart', pt: 'Página inicial da loja GVV Paraná com sofás, colchões e carrinho de compras' },
     title: { en: 'GVV Paraná', pt: 'GVV Paraná' },
     description: {
       en: 'A professional sofa and mattress storefront connecting the product catalog to purchasing and store operations.',
@@ -107,6 +113,8 @@ export const projectsData: Project[] = [
   },
   {
     id: 'givova-website', slug: 'givova-website',
+    image: '/images/projects/givova-transportes.webp',
+    imageAlt: { en: 'Givova Transportes homepage with logistics services, quotation and tracking options', pt: 'Página inicial da Givova Transportes com serviços de logística, cotação e rastreamento' },
     title: { en: 'Givova Transportes Website', pt: 'Site da Givova Transportes' },
     description: {
       en: 'A corporate transportation and logistics website with clear service information and a responsive interface.',
@@ -121,8 +129,8 @@ export const projectsData: Project[] = [
     categoryLabel: { en: 'Corporate Website · Transport & Logistics', pt: 'Site Corporativo · Transporte e Logística' },
     myRole: { en: 'Website development', pt: 'Desenvolvimento do site' },
     highlights: {
-      en: ['Professional corporate presence.', 'Company and services presentation.', 'Responsive UI and modern frontend.'],
-      pt: ['Presença corporativa profissional.', 'Apresentação da empresa e dos serviços.', 'Interface responsiva e frontend moderno.']
+      en: ['Professional corporate presence.', 'Transportation and logistics information architecture.', 'Responsive UI with quotation and tracking entry points.'],
+      pt: ['Presença corporativa profissional.', 'Arquitetura da informação de transporte e logística.', 'Interface responsiva com acesso à cotação e ao rastreamento.']
     },
     challenges: {
       en: 'Present company information and services clearly on different screen sizes.',

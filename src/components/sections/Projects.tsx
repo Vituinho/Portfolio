@@ -14,18 +14,18 @@ const featuredOrder = ['givova-website', 'gvv-parana', 'givova-coleta', 'keyforg
 function ProjectCover({ project, locale }: { project: Project; locale: 'en' | 'pt' }) {
   const Icon = coverIcons[project.id as keyof typeof coverIcons] ?? Building2;
   if (project.image) return (
-    <div className="relative aspect-[16/10] overflow-hidden border-b border-border-custom bg-bg-secondary">
-      <Image src={project.image} alt={`${project.title[locale]} — ${locale === 'pt' ? 'interface do projeto' : 'project interface'}`} fill sizes="(max-width: 767px) 100vw, 560px" quality={90} className="object-contain" />
+    <div className="relative aspect-[16/9] overflow-hidden border-b border-border-custom bg-bg-secondary">
+      <Image src={project.image} alt={project.imageAlt?.[locale] ?? `${project.title[locale]} — ${locale === 'pt' ? 'interface do projeto' : 'project interface'}`} fill sizes="(max-width: 767px) 100vw, 560px" quality={90} className="object-contain" />
     </div>
   );
   return (
-    <div className="project-cover aspect-[16/10] border-b border-border-custom p-5 sm:p-7 flex flex-col justify-between" aria-hidden="true">
+    <div className="project-cover aspect-[16/9] border-b border-border-custom p-5 sm:p-7 flex flex-col justify-between" aria-hidden="true">
       <div className="flex justify-between items-center">
         <Icon className="size-8 text-text-secondary" strokeWidth={1.4} />
         <span className="text-xs font-mono text-text-secondary">{project.kind === 'professional' ? 'GIVOVA /' : locale === 'pt' ? 'PESSOAL /' : 'PERSONAL /'}</span>
       </div>
       <div>
-        {project.id === 'givova-coleta' && <div className="flex items-center gap-2 mb-4 font-mono text-[10px] sm:text-xs text-text-secondary">
+        {project.id === 'givova-coleta' && <div className="flex flex-wrap items-center gap-2 mb-4 font-mono text-[10px] sm:text-xs text-text-secondary">
           {['Windows CE', 'FastAPI', 'PostgreSQL'].map((item, index) => <span key={item} className="flex items-center gap-2">{index > 0 && <ArrowUpRight className="size-3 shrink-0" />}<span className="rounded border border-border-custom bg-bg-card px-2 py-2">{item}</span></span>)}
         </div>}
         <p className="text-xl sm:text-2xl font-semibold tracking-tight">{project.title[locale]}</p>
@@ -166,7 +166,7 @@ export default function Projects() {
                 <h4 className="font-semibold mb-3">{t.projects.details.highlights}</h4>
                 <ul className="list-disc pl-5 space-y-2 text-sm text-text-secondary leading-relaxed">{activeProject.highlights[locale].map(item => <li key={item}>{item}</li>)}</ul>
               </div>
-              {activeProject.image && <figure className="overflow-hidden rounded-xl border border-border-custom"><ProjectCover project={activeProject} locale={locale} /><figcaption className="px-4 py-3 text-xs text-text-secondary">{activeProject.title[locale]} · {locale === 'pt' ? 'Interface do projeto' : 'Project interface'}</figcaption></figure>}
+              {activeProject.image && <figure className="overflow-hidden rounded-xl border border-border-custom"><ProjectCover project={activeProject} locale={locale} /><figcaption className="px-4 py-3 text-xs text-text-secondary flex flex-wrap items-center justify-between gap-3"><span>{activeProject.title[locale]}</span><a href={activeProject.image} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 font-medium hover:underline">{t.projects.openImage}<ArrowUpRight className="size-3.5" /></a></figcaption></figure>}
               <div className="border-t border-border-custom pt-4 flex flex-wrap gap-4 items-center justify-between">
                 {sourceLabel(activeProject) && <span className="text-sm text-text-secondary">{sourceLabel(activeProject)}</span>}
                 {links(activeProject)}

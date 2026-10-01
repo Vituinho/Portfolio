@@ -54,6 +54,7 @@ export interface Project {
     pt: string;
   };
   image?: string;
+  imageAlt?: { en: string; pt: string };
   galleryImages?: string[];
   technologies: string[];
   coreTechnologies?: string[];

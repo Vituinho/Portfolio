@@ -56,6 +56,7 @@ export const pt: Translations = {
     hideMore: "Mostrar Menos",
     empty: "Nenhum projeto corresponde aos filtros.",
     technologies: "Tecnologias",
+    openImage: "Abrir imagem completa",
     filterTech: "Filtrar por Tecnologia",
     filterAll: "Todas",
     filterCategory: "Categoria",

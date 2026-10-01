@@ -54,6 +54,7 @@ export const en = {
     hideMore: "Show Less",
     empty: "No projects match these filters.",
     technologies: "Technologies",
+    openImage: "Open full-size image",
     filterTech: "Filter by Technology",
     filterAll: "All",
     filterCategory: "Category",
