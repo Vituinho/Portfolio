@@ -8,22 +8,24 @@ import type { SkillCategory } from '@/types/portfolio';
 
 const icons = { Atom, Cloud, Code2, Container, Cpu, Database, FileCode, GitBranch, Github, Layout, Send, Server, Wind, Workflow };
 const categories: SkillCategory[] = ['frontend', 'backend', 'databases', 'tools', 'other'];
+const categoryIcons = { frontend: Layout, backend: Server, databases: Database, tools: Container, other: Workflow };
 
 export default function Skills() {
   const { locale, t } = useI18n();
   return (
     <section id="skills" className="section-shell">
       <h2 className="section-title">{t.skills.title}</h2>
-      <div className="grid md:grid-cols-2 gap-5">
+      <div className="grid md:grid-cols-2 gap-6">
         {categories.map(category => {
           const group = skillsData.filter(skill => skill.category === category);
+          const CategoryIcon = categoryIcons[category as keyof typeof categoryIcons] ?? Code2;
           return (
-            <Card key={category} hoverEffect={false} className={category === 'other' ? 'md:col-span-2' : ''}>
-              <h3 className="font-semibold mb-5">{t.skills.categories[category]}</h3>
-              <ul className="flex flex-wrap gap-2">
+            <Card key={category} hoverEffect={false} className={`${category === 'other' ? 'md:col-span-2' : ''} ${category === 'backend' ? 'border-text-secondary/40' : ''}`}>
+              <h3 className="flex items-start gap-3 text-lg font-medium leading-snug mb-5"><CategoryIcon className="size-5 shrink-0 mt-0.5 text-text-secondary" />{t.skills.categories[category]}</h3>
+              <ul className={`grid gap-x-5 gap-y-3 ${category === 'other' ? 'sm:grid-cols-2 lg:grid-cols-3' : 'grid-cols-2'}`}>
                 {group.filter(skill => !skill.supporting).map(skill => {
                   const Icon = icons[skill.icon as keyof typeof icons] ?? Code2;
-                  return <li key={skill.name} className="info-badge text-sm"><Icon className="size-4 text-text-secondary" />{skill.localizedName?.[locale] ?? skill.name}</li>;
+                  return <li key={skill.name} className="min-w-0 flex items-start gap-2.5 text-sm leading-relaxed"><Icon className="size-4 shrink-0 mt-0.5 text-text-secondary" /><span>{skill.localizedName?.[locale] ?? skill.name}</span></li>;
                 })}
               </ul>
               {group.some(skill => skill.supporting) && (
