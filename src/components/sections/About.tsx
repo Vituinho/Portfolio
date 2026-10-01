@@ -16,12 +16,12 @@ export default function About() {
           <p>{profileData.story[locale]}</p>
           <p>{profileData.passions[locale]}</p>
         </div>
-        <Card hoverEffect={false} className="flex flex-col justify-between gap-6">
+        <Card hoverEffect={false} className="flex flex-col justify-between gap-6 lg:self-start">
           <div>
             <h3 className="font-semibold mb-3">{locale === 'pt' ? 'O próximo passo' : 'Looking ahead'}</h3>
             <p className="text-sm text-text-secondary leading-relaxed">{profileData.goals[locale]}</p>
           </div>
-          <a href="#education" className="inline-flex items-center gap-2 text-sm font-semibold">
+          <a href="#education" className="inline-flex min-h-11 items-center gap-2 text-sm font-medium hover:underline underline-offset-4 rounded-md">
             {locale === 'pt' ? 'Minha experiência internacional' : 'My international experience'}<ArrowUpRight className="size-4" />
           </a>
         </Card>

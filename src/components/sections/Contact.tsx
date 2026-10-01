@@ -113,10 +113,10 @@ export default function Contact() {
   return (
     <section id="contact" className="section-shell">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.3 }}
         className="w-full"
       >
         <h2 className="section-title mb-3">
@@ -153,7 +153,7 @@ export default function Contact() {
                 {opt.copyAction && (
                   <button
                     onClick={opt.copyAction}
-                    className="p-1.5 rounded-lg border border-border-custom text-text-secondary hover:text-accent-custom hover:border-accent-custom/50 hover:bg-bg-secondary transition-all cursor-pointer"
+                    className="size-11 shrink-0 inline-flex items-center justify-center rounded-lg border border-border-custom text-text-secondary hover:text-accent-custom hover:border-accent-custom/50 hover:bg-bg-secondary transition-colors cursor-pointer"
                     aria-label={t.contact.copyEmail}
                   >
                     {opt.copied ? <Check className="w-3.5 h-3.5 text-emerald-500" /> : <Copy className="w-3.5 h-3.5" />}

@@ -41,10 +41,10 @@ export default function Books() {
   return (
     <section id="books" className="section-shell">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.3 }}
         className="w-full"
       >
         <h2 className="section-title">
@@ -56,10 +56,10 @@ export default function Books() {
           {booksData.map((book, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: idx * 0.1 }}
+              transition={{ duration: 0.25, delay: idx * 0.05 }}
             >
               <Card className="flex flex-col h-full overflow-hidden p-0">
                 {/* Book Cover Container */}

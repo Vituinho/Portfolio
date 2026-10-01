@@ -17,19 +17,19 @@ export default function Education() {
     <section id="education" className="section-shell">
       <p className="eyebrow mb-3">{pt ? 'Educação além das fronteiras' : 'Education beyond borders'}</p>
       <h2 className="section-title">{t.education.title}</h2>
-      <div className="rounded-2xl overflow-hidden border border-border-custom bg-bg-card">
+      <div className="rounded-xl overflow-hidden border border-border-custom bg-bg-card">
         {education.image && (
           <figure className="bg-bg-secondary">
-            <Image src={education.image} alt={education.imageAlt?.[locale] ?? (pt ? 'Intercâmbio no Canadá' : 'Canada exchange')} width={1672} height={941} sizes="(max-width: 1151px) calc(100vw - 32px), 1120px" quality={90} className="w-full h-auto" />
-            <figcaption className="px-6 sm:px-8 lg:px-10 py-3 border-t border-border-custom">
-              <a href={education.image} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-text-secondary hover:text-text-primary transition-colors">
+            <Image src={education.image} alt={education.imageAlt?.[locale] ?? (pt ? 'Intercâmbio no Canadá' : 'Canada exchange')} width={1672} height={941} sizes="(max-width: 639px) calc(100vw - 32px), (max-width: 1023px) calc(100vw - 48px), (max-width: 1151px) calc(100vw - 64px), 1088px" quality={90} className="w-full h-auto" />
+            <figcaption className="px-5 sm:px-6 lg:px-8 py-2 border-t border-border-custom">
+              <a href={education.image} target="_blank" rel="noopener noreferrer" className="min-h-11 inline-flex items-center gap-2 text-sm text-text-secondary hover:text-text-primary hover:underline underline-offset-4 transition-colors rounded-md">
                 {pt ? 'Ver colagem completa' : 'View full collage'}<ArrowUpRight className="size-4" />
               </a>
             </figcaption>
           </figure>
         )}
         <div className="grid lg:grid-cols-[1fr_2fr] border-t border-border-custom">
-          <div className="bg-bg-secondary flex flex-col">
+          <div className="bg-bg-secondary flex flex-col border-b lg:border-b-0 lg:border-r border-border-custom">
             {!education.image && (
               <div className="project-cover p-6 sm:p-8 lg:p-10 flex-1 flex flex-col justify-between gap-12">
                 <p className="eyebrow">Ganhando o Mundo</p>
@@ -39,9 +39,9 @@ export default function Education() {
                 </div>
               </div>
             )}
-            <div className="p-6 sm:p-8 lg:px-10">
+            <div className="p-5 sm:p-6 lg:p-8">
               {education.image && <p className="font-semibold text-xl mb-3">{pt ? 'Canadá' : 'Canada'} · {education.startDate}</p>}
-              <p className="flex items-center gap-2 text-sm text-text-secondary"><MapPin className="size-4 shrink-0" />Penticton, British Columbia</p>
+              <p className="flex items-start gap-2 text-sm leading-relaxed text-text-secondary"><MapPin className="size-4 shrink-0 mt-0.5" />Penticton, British Columbia</p>
               <div className="flex flex-wrap gap-2 mt-4 text-xs">
                 {education.durationMonths && <span className="info-badge">{education.durationMonths} {pt ? 'meses' : 'months'}</span>}
                 <span className="info-badge">{pt ? 'Intercâmbio Internacional' : 'International Exchange'}</span>
@@ -49,10 +49,10 @@ export default function Education() {
               </div>
             </div>
           </div>
-          <div className="p-6 sm:p-8 lg:p-10 flex flex-col justify-center">
-            <p className="flex items-center gap-2 text-sm text-text-secondary mb-4"><GraduationCap className="size-4 shrink-0" />{education.course[locale]}</p>
-            <h3 className="text-2xl font-semibold mb-5 tracking-tight">{education.institution}</h3>
-            <p className="text-sm sm:text-base text-text-secondary leading-relaxed">{education.description[locale]}</p>
+          <div className="p-5 sm:p-6 lg:p-8 flex flex-col justify-center">
+            <p className="flex items-start gap-2 text-sm leading-relaxed text-text-secondary mb-4"><GraduationCap className="size-4 shrink-0 mt-0.5" />{education.course[locale]}</p>
+            <h3 className="text-xl sm:text-2xl font-semibold mb-5 leading-snug tracking-tight">{education.institution}</h3>
+            <p className="max-w-[65ch] text-sm sm:text-base text-text-secondary leading-relaxed">{education.description[locale]}</p>
             <ul className="flex flex-wrap gap-2 my-6">
               {skills.map(skill => <li key={skill} className="info-badge text-xs">{skill}</li>)}
             </ul>
@@ -61,7 +61,7 @@ export default function Education() {
             </p>
             <div className="border-t border-border-custom pt-6 flex flex-wrap items-center justify-between gap-4">
               <p className="text-xl font-semibold">{pt ? 'Inglês' : 'English'} <span className="text-text-secondary">/ C1</span></p>
-              <a href={languagesData[0].certificate} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-medium rounded-lg border border-border-custom px-3 py-2 hover:bg-bg-secondary transition-colors">
+              <a href={languagesData[0].certificate} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 text-sm font-medium rounded-lg border border-border-custom px-3 py-2 hover:bg-bg-secondary transition-colors">
                 {pt ? 'Certificado EF SET' : 'EF SET certified'}<ArrowUpRight className="size-4" />
               </a>
             </div>
