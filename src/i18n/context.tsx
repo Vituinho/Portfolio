@@ -54,6 +54,13 @@ export const I18nProvider = ({ children }: { children: React.ReactNode }) => {
     }
     document.querySelector('meta[property="og:locale"]')?.setAttribute('content', isPt ? 'pt_BR' : 'en_US');
     document.querySelector('meta[property="og:locale:alternate"]')?.setAttribute('content', isPt ? 'en_US' : 'pt_BR');
+
+    // Next.js can hydrate the static title after this effect on the first load.
+    const observer = new MutationObserver(() => {
+      if (document.title !== title) document.title = title;
+    });
+    observer.observe(document.head, { childList: true, subtree: true, characterData: true });
+    return () => observer.disconnect();
   }, [locale, mounted]);
 
   return (

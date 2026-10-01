@@ -21,7 +21,7 @@ function ProjectCover({ project, locale }: { project: Project; locale: 'en' | 'p
     <div className="project-cover aspect-[2/1] border-b border-border-custom p-6 sm:p-8 flex flex-col justify-between" aria-hidden="true">
       <div className="flex justify-between items-center">
         <Icon className="size-8 text-text-secondary" strokeWidth={1.4} />
-        <span className="text-xs font-mono text-text-secondary">{project.kind === 'professional' ? 'GIVOVA /' : 'PERSONAL /'}</span>
+        <span className="text-xs font-mono text-text-secondary">{project.kind === 'professional' ? 'GIVOVA /' : locale === 'pt' ? 'PESSOAL /' : 'PERSONAL /'}</span>
       </div>
       <div>
         <p className="text-xl sm:text-2xl font-semibold tracking-tight">{project.id === 'givova-coleta' ? 'Givova Coleta' : project.title[locale]}</p>
@@ -128,14 +128,21 @@ export default function Projects() {
       {renderGrid(featured)}
       {more.length > 0 && (
         <div className="mt-10">
-          <button onClick={() => setShowMore(!showMore)} aria-expanded={showMore || filtering} aria-controls="more-projects" className="action-link border border-border-custom mb-6 hover:bg-bg-secondary">
+          {filtering ? <h3 className="text-xl font-semibold mb-6">{t.projects.moreProjects}</h3> : <button onClick={() => setShowMore(!showMore)} aria-expanded={showMore} aria-controls="more-projects" className="action-link border border-border-custom mb-6 hover:bg-bg-secondary">
             {showMore ? t.projects.hideMore : t.projects.moreProjects} ({more.length})
-          </button>
-          {(showMore || filtering) && <div id="more-projects">{renderGrid(more)}</div>}
+          </button>}
+          <div id="more-projects" hidden={!showMore && !filtering}>{renderGrid(more)}</div>
         </div>
       )}
       {filtered.length === 0 && <p className="text-text-secondary py-8" role="status">{t.projects.empty}</p>}
-      <dialog ref={dialogRef} aria-labelledby="project-dialog-title" onCancel={e => { e.preventDefault(); setActiveProject(null); }} onClick={e => { if (e.target === e.currentTarget) setActiveProject(null); }} className="m-auto w-[calc(100%_-_2rem)] max-w-3xl max-h-[90dvh] overflow-y-auto p-0 rounded-2xl border border-border-custom bg-bg-primary text-text-primary shadow-xl backdrop:bg-black/60">
+      <dialog ref={dialogRef} aria-labelledby="project-dialog-title" onCancel={e => { e.preventDefault(); setActiveProject(null); }} onClick={e => { if (e.target === e.currentTarget) setActiveProject(null); }} onKeyDown={e => {
+        if (e.key !== 'Tab') return;
+        const controls = e.currentTarget.querySelectorAll<HTMLElement>('button:not(:disabled), a[href]');
+        const first = controls[0];
+        const last = controls[controls.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last?.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first?.focus(); }
+      }} className="m-auto w-[calc(100%_-_2rem)] max-w-3xl max-h-[90dvh] overflow-y-auto p-0 rounded-2xl border border-border-custom bg-bg-primary text-text-primary shadow-xl backdrop:bg-black/60">
         {activeProject && (
           <div>
             <div className="sticky top-0 bg-bg-primary z-10 p-5 sm:p-6 border-b border-border-custom flex items-start justify-between gap-4">

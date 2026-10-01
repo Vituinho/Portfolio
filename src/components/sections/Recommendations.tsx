@@ -67,7 +67,7 @@ export default function Recommendations() {
                         {rec.name}
                       </h4>
                       <p className="text-[11px] text-text-secondary leading-snug">
-                        {rec.position[locale]} at <span className="font-semibold text-accent-custom">{rec.company}</span>
+                        {rec.position[locale]} {locale === 'pt' ? 'na' : 'at'} <span className="font-semibold text-accent-custom">{rec.company}</span>
                       </p>
                     </div>
                   </div>
@@ -83,7 +83,7 @@ export default function Recommendations() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="p-1 rounded-md border border-border-custom hover:border-accent-custom hover:text-accent-custom transition-all text-text-secondary"
-                        aria-label="LinkedIn Profile"
+                        aria-label={locale === 'pt' ? 'Perfil no LinkedIn' : 'LinkedIn Profile'}
                       >
                         <Linkedin className="w-3.5 h-3.5" />
                       </a>

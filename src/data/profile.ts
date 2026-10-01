@@ -26,4 +26,3 @@ export const profileData: ProfileInfo = {
   avatarUrl: '/images/avatar.jpeg',
   cvUrl: '/vituinho-cv.pdf'
 };
-

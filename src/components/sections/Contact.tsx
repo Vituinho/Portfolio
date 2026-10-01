@@ -99,7 +99,7 @@ export default function Contact() {
     { 
       icon: <Linkedin className="w-5 h-5" />, 
       title: "LinkedIn", 
-      value: "linkedin.com/in/victoremanuel", 
+      value: locale === 'pt' ? 'Perfil no LinkedIn' : 'LinkedIn profile',
       link: contactData.linkedin 
     },
     { 
@@ -131,11 +131,11 @@ export default function Contact() {
           <div className="lg:col-span-5 flex flex-col gap-4 order-2 lg:order-1">
             {contactOptions.map((opt, idx) => (
               <Card key={idx} hoverEffect={true} className="flex items-center justify-between gap-4 p-5">
-                <div className="flex items-center gap-3">
-                  <span className="p-3 rounded-lg bg-accent-custom/5 text-accent-custom border border-accent-custom/10">
+                <div className="flex items-center gap-3 min-w-0">
+                  <span className="p-3 shrink-0 rounded-lg bg-accent-custom/5 text-accent-custom border border-accent-custom/10">
                     {opt.icon}
                   </span>
-                  <div className="text-left">
+                  <div className="text-left min-w-0">
                     <span className="block text-[10px] uppercase font-bold text-text-secondary tracking-wider">
                       {opt.title}
                     </span>
@@ -143,7 +143,7 @@ export default function Contact() {
                       href={opt.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm font-semibold text-text-primary hover:text-accent-custom hover:underline transition-all"
+                      className="text-sm font-semibold text-text-primary hover:text-accent-custom hover:underline transition-all break-words"
                     >
                       {opt.value}
                     </a>
