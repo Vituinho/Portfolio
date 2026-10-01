@@ -12,7 +12,7 @@ const categories: SkillCategory[] = ['frontend', 'backend', 'databases', 'tools'
 export default function Skills() {
   const { locale, t } = useI18n();
   return (
-    <section id="skills" className="py-20 px-4 max-w-6xl mx-auto border-t border-border-custom/50">
+    <section id="skills" className="section-shell">
       <h2 className="section-title">{t.skills.title}</h2>
       <div className="grid md:grid-cols-2 gap-5">
         {categories.map(category => {

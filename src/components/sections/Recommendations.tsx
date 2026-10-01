@@ -12,7 +12,7 @@ export default function Recommendations() {
   const { locale, t } = useI18n();
 
   return (
-    <section id="recommendations" className="py-20 px-4 max-w-6xl mx-auto border-t border-border-custom/50">
+    <section id="recommendations" className="section-shell">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -20,7 +20,7 @@ export default function Recommendations() {
         transition={{ duration: 0.6 }}
         className="w-full"
       >
-        <h2 className="text-3xl font-bold text-text-primary mb-12 relative pb-3 border-b border-border-custom max-w-max">
+        <h2 className="section-title">
           {t.recommendations.title}
         </h2>
 

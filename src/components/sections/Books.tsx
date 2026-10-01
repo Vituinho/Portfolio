@@ -39,7 +39,7 @@ export default function Books() {
   };
 
   return (
-    <section id="books" className="py-20 px-4 max-w-6xl mx-auto border-t border-border-custom/50">
+    <section id="books" className="section-shell">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -47,7 +47,7 @@ export default function Books() {
         transition={{ duration: 0.6 }}
         className="w-full"
       >
-        <h2 className="text-3xl font-bold text-text-primary mb-12 relative pb-3 border-b border-border-custom max-w-max">
+        <h2 className="section-title">
           {t.books.title}
         </h2>
 
@@ -68,7 +68,7 @@ export default function Books() {
                     src={book.cover}
                     alt={book.title}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="object-cover"
                   />
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-300" />
 
@@ -80,7 +80,7 @@ export default function Books() {
 
                 {/* Body Content Details */}
                 <div className="p-5 flex flex-col flex-grow">
-                  <h3 className="font-extrabold text-base text-text-primary mb-1 line-clamp-1">
+                  <h3 className="font-semibold text-lg text-text-primary mb-1">
                     {book.title}
                   </h3>
                   
@@ -88,7 +88,7 @@ export default function Books() {
                     {book.author}
                   </p>
 
-                  <div className="flex items-center gap-3 text-[11px] text-text-secondary mb-4">
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-text-secondary mb-4">
                     <span>{t.books.genre}: <span className="font-semibold text-text-primary">{book.genre[locale]}</span></span>
                     <span>&bull;</span>
                     <span>{book.pages} {t.books.pages}</span>
@@ -123,7 +123,7 @@ export default function Books() {
                         <FileText className="w-3.5 h-3.5 text-accent-custom/60" />
                         {t.books.notes}:
                       </h4>
-                      <p className="text-[11px] text-text-secondary leading-relaxed">
+                      <p className="text-sm text-text-secondary leading-relaxed">
                         {book.personalNotes[locale]}
                       </p>
                     </div>

@@ -104,7 +104,7 @@ export default function Projects() {
   );
 
   return (
-    <section id="projects" className="py-20 px-4 max-w-6xl mx-auto border-t border-border-custom/50">
+    <section id="projects" className="section-shell">
       <div className="flex flex-col gap-5 mb-8">
         <div>
           <p className="eyebrow mb-3">{t.projects.eyebrow}</p>

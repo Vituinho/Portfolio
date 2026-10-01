@@ -111,7 +111,7 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="py-20 px-4 max-w-6xl mx-auto border-t border-border-custom/50">
+    <section id="contact" className="section-shell">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -119,10 +119,10 @@ export default function Contact() {
         transition={{ duration: 0.6 }}
         className="w-full"
       >
-        <h2 className="text-3xl font-bold text-text-primary mb-3 relative pb-3 border-b border-border-custom max-w-max">
+        <h2 className="section-title mb-3">
           {t.contact.title}
         </h2>
-        <p className="text-sm text-text-secondary mb-12">
+        <p className="text-base text-text-secondary max-w-2xl leading-relaxed mb-8">
           {t.contact.subtitle}
         </p>
 
@@ -180,7 +180,7 @@ export default function Contact() {
                       value={formData.name}
                       onChange={handleInputChange}
                       disabled={isSubmitting}
-                      className={`px-4 py-2 text-sm rounded-lg bg-bg-secondary border text-text-primary outline-none transition-all ${
+                      className={`min-h-11 px-4 py-3 text-base rounded-lg bg-bg-secondary border text-text-primary transition-colors ${
                         errors.name 
                           ? "border-red-500 focus:border-red-500" 
                           : "border-border-custom focus:border-accent-custom"
@@ -205,7 +205,7 @@ export default function Contact() {
                       value={formData.email}
                       onChange={handleInputChange}
                       disabled={isSubmitting}
-                      className={`px-4 py-2 text-sm rounded-lg bg-bg-secondary border text-text-primary outline-none transition-all ${
+                      className={`min-h-11 px-4 py-3 text-base rounded-lg bg-bg-secondary border text-text-primary transition-colors ${
                         errors.email 
                           ? "border-red-500 focus:border-red-500" 
                           : "border-border-custom focus:border-accent-custom"
@@ -232,7 +232,7 @@ export default function Contact() {
                     value={formData.subject}
                     onChange={handleInputChange}
                     disabled={isSubmitting}
-                    className={`px-4 py-2 text-sm rounded-lg bg-bg-secondary border text-text-primary outline-none transition-all ${
+                    className={`min-h-11 px-4 py-3 text-base rounded-lg bg-bg-secondary border text-text-primary transition-colors ${
                       errors.subject 
                         ? "border-red-500 focus:border-red-500" 
                         : "border-border-custom focus:border-accent-custom"
@@ -258,7 +258,7 @@ export default function Contact() {
                     value={formData.message}
                     onChange={handleInputChange}
                     disabled={isSubmitting}
-                    className={`px-4 py-2 text-sm rounded-lg bg-bg-secondary border text-text-primary outline-none transition-all resize-none ${
+                    className={`min-h-11 px-4 py-3 text-base rounded-lg bg-bg-secondary border text-text-primary transition-colors resize-none ${
                       errors.message 
                         ? "border-red-500 focus:border-red-500" 
                         : "border-border-custom focus:border-accent-custom"

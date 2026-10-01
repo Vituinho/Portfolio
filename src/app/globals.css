@@ -86,7 +86,11 @@ h1, h2, h3, h4 {
 }
 
 .section-title {
-  @apply text-3xl sm:text-4xl font-bold tracking-tight mb-8;
+  @apply text-3xl sm:text-4xl font-semibold tracking-tight leading-tight mb-8;
+}
+
+.section-shell {
+  @apply w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 border-t border-border-custom;
 }
 
 .eyebrow {
@@ -94,11 +98,15 @@ h1, h2, h3, h4 {
 }
 
 .action-link {
-  @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-3 text-sm font-semibold transition-colors cursor-pointer;
+  @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-lg px-4 py-3 text-sm font-medium transition-colors cursor-pointer;
 }
 
 .info-badge {
-  @apply inline-flex items-center gap-2 rounded-md border border-border-custom bg-bg-primary px-2.5 py-1.5;
+  @apply inline-flex items-center gap-2 rounded-md border border-border-custom bg-bg-primary px-2.5 py-1 leading-relaxed;
+}
+
+.tech-tag {
+  @apply inline-flex max-w-full items-center rounded-md border border-border-custom bg-bg-secondary px-2.5 py-1 text-xs leading-relaxed text-text-secondary;
 }
 
 .project-kind-professional {
@@ -116,6 +124,7 @@ h1, h2, h3, h4 {
   html { scroll-behavior: auto; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
 }

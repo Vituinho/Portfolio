@@ -11,7 +11,7 @@ export default function Experience() {
   const { locale, t } = useI18n();
 
   return (
-    <section id="experience" className="py-20 px-4 max-w-6xl mx-auto border-t border-border-custom/50">
+    <section id="experience" className="section-shell">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -19,7 +19,7 @@ export default function Experience() {
         transition={{ duration: 0.6 }}
         className="w-full"
       >
-        <h2 className="text-3xl font-bold text-text-primary mb-12 relative pb-3 border-b border-border-custom max-w-max">
+        <h2 className="section-title">
           {t.experience.title}
         </h2>
 

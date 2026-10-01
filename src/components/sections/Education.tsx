@@ -14,7 +14,7 @@ export default function Education() {
     ? ['Comunicação internacional', 'Independência', 'Adaptabilidade', 'Consciência cultural']
     : ['International communication', 'Independence', 'Adaptability', 'Cultural awareness'];
   return (
-    <section id="education" className="py-20 px-4 max-w-6xl mx-auto border-t border-border-custom/50">
+    <section id="education" className="section-shell">
       <p className="eyebrow mb-3">{pt ? 'Educação além das fronteiras' : 'Education beyond borders'}</p>
       <h2 className="section-title">{t.education.title}</h2>
       <div className="rounded-2xl overflow-hidden border border-border-custom bg-bg-card">

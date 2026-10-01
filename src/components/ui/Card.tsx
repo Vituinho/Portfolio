@@ -11,8 +11,8 @@ export default function Card({ className, hoverEffect = true, children, ...props
   return (
     <div
       className={cn(
-        "bg-bg-card border border-border-custom rounded-xl p-6 transition-all duration-200",
-        hoverEffect && "hover:shadow-md hover:border-text-secondary/40",
+        "bg-bg-card border border-border-custom rounded-xl p-5 sm:p-6 transition-[border-color,box-shadow] duration-200",
+        hoverEffect && "hover:shadow-sm hover:border-text-secondary/50 focus-within:border-text-secondary/50",
         className
       )}
       {...props}
