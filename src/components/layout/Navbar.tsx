@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useI18n } from '@/i18n/context';
 import { useTheme } from 'next-themes';
 import { Menu, X, Sun, Moon, Globe } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 const SECTION_IDS = ['hero', 'projects', 'experience', 'skills', 'about', 'education', 'languages', 'recommendations', 'contact'];
@@ -78,18 +78,8 @@ export default function Navbar() {
     };
   }, [mounted]); // Re-run when locale changes to bind correct IDs
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-    e.preventDefault();
-    const element = document.getElementById(id);
-    if (element) {
-      setMobileMenuOpen(false);
-      const offset = 80; // height of sticky navbar
-      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-      window.scrollTo({
-        top: elementPosition - offset,
-        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
-      });
-    }
+  const handleNavClick = () => {
+    setMobileMenuOpen(false);
   };
 
   if (!mounted) return null;
@@ -119,7 +109,7 @@ export default function Navbar() {
         {/* Logo */}
         <a 
           href="#hero"
-          onClick={(e) => handleNavClick(e, 'hero')}
+          onClick={handleNavClick}
           className="font-semibold text-lg tracking-tight min-h-11 inline-flex items-center hover:opacity-85 transition-opacity"
         >
           VE<span className="text-accent-custom">.</span>
@@ -132,7 +122,7 @@ export default function Navbar() {
               key={item.id}
               href={`#${item.id}`}
               aria-current={activeSection === item.id ? 'location' : undefined}
-              onClick={(e) => handleNavClick(e, item.id)}
+              onClick={handleNavClick}
               className={cn(
                 "text-sm font-medium transition-colors hover:text-accent-custom relative py-3",
                 activeSection === item.id 
@@ -188,36 +178,30 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu Panel */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.nav
-            id="mobile-navigation"
-            aria-label={locale === 'pt' ? 'Navegação móvel' : 'Mobile navigation'}
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.15 }}
-            className="absolute top-full inset-x-0 lg:hidden bg-bg-primary border-b border-border-custom px-4 sm:px-6 py-3 flex flex-col gap-1 max-h-[calc(100dvh-4rem)] overflow-y-auto shadow-sm"
-          >
-            {navItems.map((item) => (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
-                aria-current={activeSection === item.id ? 'location' : undefined}
-                onClick={(e) => handleNavClick(e, item.id)}
-                className={cn(
-                  "min-h-11 text-sm font-medium py-3 px-3 rounded-lg transition-colors",
-                  activeSection === item.id 
-                    ? "bg-bg-secondary text-accent-custom font-semibold" 
-                    : "text-text-secondary hover:bg-bg-secondary/50 hover:text-text-primary"
-                )}
-              >
-                {item.label}
-              </a>
-            ))}
-          </motion.nav>
-        )}
-      </AnimatePresence>
+      {mobileMenuOpen && (
+        <nav
+          id="mobile-navigation"
+          aria-label={locale === 'pt' ? 'Navegação móvel' : 'Mobile navigation'}
+          className="absolute top-full inset-x-0 lg:hidden bg-bg-primary border-b border-border-custom px-4 sm:px-6 py-3 flex flex-col gap-1 max-h-[calc(100dvh-4rem)] overflow-y-auto shadow-sm"
+        >
+          {navItems.map((item) => (
+            <a
+              key={item.id}
+              href={`#${item.id}`}
+              aria-current={activeSection === item.id ? 'location' : undefined}
+              onClick={handleNavClick}
+              className={cn(
+                "min-h-11 text-sm font-medium py-3 px-3 rounded-lg transition-colors",
+                activeSection === item.id
+                  ? "bg-bg-secondary text-accent-custom font-semibold"
+                  : "text-text-secondary hover:bg-bg-secondary/50 hover:text-text-primary"
+              )}
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+      )}
     </header>
   );
 }
