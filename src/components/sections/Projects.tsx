@@ -11,11 +11,11 @@ import Image from 'next/image';
 const coverIcons = { 'givova-ticketing': Ticket, 'givova-coleta': ScanBarcode, keyforge: Keyboard, 'gvv-parana': ShoppingBag };
 const featuredOrder = ['givova-website', 'gvv-parana', 'givova-coleta', 'keyforge'];
 
-function ProjectCover({ project, locale }: { project: Project; locale: 'en' | 'pt' }) {
+function ProjectCover({ project, locale, detail = false }: { project: Project; locale: 'en' | 'pt'; detail?: boolean }) {
   const Icon = coverIcons[project.id as keyof typeof coverIcons] ?? Building2;
   if (project.image) return (
     <div className="relative aspect-[16/9] overflow-hidden border-b border-border-custom bg-bg-secondary">
-      <Image src={project.image} alt={project.imageAlt?.[locale] ?? `${project.title[locale]} — ${locale === 'pt' ? 'interface do projeto' : 'project interface'}`} fill sizes="(max-width: 767px) 100vw, 560px" quality={90} className="object-contain" />
+      <Image src={project.image} alt={project.imageAlt?.[locale] ?? `${project.title[locale]} — ${locale === 'pt' ? 'interface do projeto' : 'project interface'}`} fill sizes={detail ? '(max-width: 767px) calc(100vw - 56px), 720px' : '(max-width: 767px) calc(100vw - 32px), (max-width: 1151px) 50vw, 544px'} quality={90} className="object-contain" />
     </div>
   );
   return (
@@ -66,8 +66,8 @@ export default function Projects() {
     ? t.projects.privateSource : project.source === 'public' ? t.projects.publicSource : project.source === 'open' ? t.projects.openSource : null;
   const links = (project: Project) => (
     <div className="flex flex-wrap gap-2 text-sm">
-      {project.githubUrl && project.source !== 'private' && <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label={`${t.projects.githubLink} — ${project.title[locale]}`} className="inline-flex items-center gap-1.5 rounded-lg border border-border-custom px-3 py-2 hover:bg-bg-secondary transition-colors"><Github className="size-4" />GitHub</a>}
-      {project.demoUrl && <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 rounded-lg border border-border-custom px-3 py-2 hover:bg-bg-secondary transition-colors">{t.projects.demoLink}<ArrowUpRight className="size-4" /></a>}
+      {project.githubUrl && project.source !== 'private' && <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label={`${t.projects.githubLink} — ${project.title[locale]}`} className="inline-flex min-h-11 items-center gap-1.5 rounded-lg border border-border-custom px-3 py-2 hover:bg-bg-secondary hover:border-text-secondary/50 transition-colors"><Github className="size-4" />GitHub</a>}
+      {project.demoUrl && <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-1.5 rounded-lg border border-border-custom px-3 py-2 hover:bg-bg-secondary hover:border-text-secondary/50 transition-colors">{t.projects.demoLink}<ArrowUpRight className="size-4" /></a>}
     </div>
   );
   const renderGrid = (items: Project[]) => (
@@ -77,21 +77,21 @@ export default function Projects() {
           <Card className="overflow-hidden p-0 h-full flex flex-col">
             <ProjectCover project={project} locale={locale} />
             <div className="p-5 sm:p-6 flex flex-col flex-1">
-              <div className="flex flex-wrap gap-2 text-xs mb-4">
+              <h3 className="text-xl sm:text-2xl font-semibold mb-3 leading-snug tracking-tight">{project.title[locale]}</h3>
+              <div className="flex flex-wrap gap-2 text-xs mb-3">
                 <span className={project.kind === 'professional' ? 'project-kind-professional info-badge' : 'info-badge'}>
                   {project.kind === 'professional' ? t.projects.professional : t.projects.personal}
                 </span>
                 {sourceLabel(project) && <span className="info-badge text-text-secondary">{sourceLabel(project)}</span>}
                 {project.status && <span className="info-badge text-text-secondary">{project.status === 'completed' ? t.projects.statusCompleted : project.status === 'live' ? t.projects.statusLive : t.projects.statusInProgress}</span>}
               </div>
-              <p className="text-xs text-text-secondary mb-2">{project.categoryLabel?.[locale] ?? project.category}</p>
-              <h3 className="text-xl sm:text-2xl font-semibold mb-3 leading-snug tracking-tight">{project.title[locale]}</h3>
+              <p className="text-xs text-text-secondary mb-3 leading-relaxed">{project.categoryLabel?.[locale] ?? project.category}</p>
               <p className="text-sm text-text-secondary leading-relaxed mb-4">{project.description[locale]}</p>
               <div className="flex flex-wrap gap-1.5 mb-6">
-                {(project.coreTechnologies ?? project.technologies.slice(0, 4)).map(item => <span key={item} className="text-xs text-text-secondary rounded border border-border-custom px-2 py-1">{item}</span>)}
+                {(project.coreTechnologies ?? project.technologies.slice(0, 4)).map(item => <span key={item} className="tech-tag">{item}</span>)}
               </div>
               <div className="flex flex-wrap items-center justify-between gap-4 border-t border-border-custom pt-4 mt-auto">
-                <button onClick={() => setActiveProject(project)} aria-haspopup="dialog" aria-label={`${t.projects.viewDetails} — ${project.title[locale]}`} className="inline-flex items-center gap-2 text-sm font-semibold cursor-pointer hover:underline min-h-10">
+                <button onClick={() => setActiveProject(project)} aria-haspopup="dialog" aria-label={`${t.projects.viewDetails} — ${project.title[locale]}`} className="inline-flex items-center gap-2 text-sm font-medium cursor-pointer hover:underline underline-offset-4 min-h-11 rounded-md">
                   {t.projects.viewDetails}<ArrowUpRight className="size-4" />
                 </button>
                 {links(project)}
@@ -108,20 +108,20 @@ export default function Projects() {
       <div className="flex flex-col gap-5 mb-8">
         <div>
           <p className="eyebrow mb-3">{t.projects.eyebrow}</p>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-3">{t.projects.title}</h2>
+          <h2 className="section-title mb-3">{t.projects.title}</h2>
           <p className="text-text-secondary max-w-2xl leading-relaxed">{t.projects.subtitle}</p>
         </div>
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div className="flex flex-wrap gap-2" aria-label={t.projects.filterCategory}>
             {['all', 'professional', 'personal'].map(item => (
-              <button key={item} onClick={() => setKind(item)} aria-pressed={kind === item} className={`px-3 py-2 rounded-lg text-sm border cursor-pointer transition-colors ${kind === item ? 'bg-accent-custom text-bg-primary border-accent-custom' : 'border-border-custom text-text-secondary hover:bg-bg-secondary'}`}>
+              <button key={item} onClick={() => setKind(item)} aria-pressed={kind === item} className={`min-h-11 px-3 py-2 rounded-lg text-sm border cursor-pointer transition-colors ${kind === item ? 'bg-accent-custom text-bg-primary border-accent-custom' : 'border-border-custom text-text-secondary hover:bg-bg-secondary'}`}>
                 {item === 'all' ? t.projects.filterAll : item === 'professional' ? t.projects.professionalFilter : t.projects.personalFilter}
               </button>
             ))}
           </div>
-          <label className="flex flex-wrap items-center gap-2 text-sm text-text-secondary">
+          <label className="flex flex-col sm:flex-row sm:items-center gap-2 w-full sm:w-auto min-w-0 text-sm text-text-secondary">
             {t.projects.filterTech}
-            <select value={tech} onChange={e => setTech(e.target.value)} className="border border-border-custom bg-bg-primary rounded-lg px-3 py-2 max-w-full">
+            <select value={tech} onChange={e => setTech(e.target.value)} className="min-h-11 min-w-0 border border-border-custom bg-bg-primary rounded-lg px-3 py-2 max-w-full">
               <option value="all">{t.projects.filterAll}</option>
               {technologies.map(item => <option key={item}>{item}</option>)}
             </select>
@@ -145,28 +145,28 @@ export default function Projects() {
         const last = controls[controls.length - 1];
         if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last?.focus(); }
         else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first?.focus(); }
-      }} className="m-auto w-[calc(100%_-_2rem)] max-w-3xl max-h-[90dvh] overflow-y-auto p-0 rounded-2xl border border-border-custom bg-bg-primary text-text-primary shadow-xl backdrop:bg-black/60">
+      }} className="m-auto w-[calc(100%_-_1.5rem)] sm:w-[calc(100%_-_3rem)] max-w-3xl max-h-[92dvh] overflow-y-auto overscroll-contain p-0 rounded-xl border border-border-custom bg-bg-primary text-text-primary shadow-xl backdrop:bg-black/70">
         {activeProject && (
           <div>
-            <div className="sticky top-0 bg-bg-primary z-10 p-5 sm:p-6 border-b border-border-custom flex items-start justify-between gap-4">
-              <div>
+            <div className="sticky top-0 bg-bg-primary z-10 p-4 sm:p-6 border-b border-border-custom flex items-start justify-between gap-4">
+              <div className="min-w-0">
                 <p className="eyebrow mb-2">{activeProject.kind === 'professional' ? t.projects.professional : t.projects.personal}</p>
-                <h3 id="project-dialog-title" className="text-xl sm:text-2xl font-semibold">{activeProject.title[locale]}</h3>
+                <h3 id="project-dialog-title" className="text-lg sm:text-2xl font-semibold leading-snug tracking-tight">{activeProject.title[locale]}</h3>
               </div>
-              <button autoFocus onClick={() => setActiveProject(null)} aria-label={t.projects.closeDetails} className="p-2 shrink-0 rounded-lg border border-border-custom cursor-pointer hover:bg-bg-secondary"><X className="size-5" /></button>
+              <button autoFocus onClick={() => setActiveProject(null)} aria-label={t.projects.closeDetails} className="size-11 inline-flex items-center justify-center shrink-0 rounded-lg border border-border-custom cursor-pointer hover:bg-bg-secondary transition-colors"><X className="size-5" /></button>
             </div>
-            <div className="p-5 sm:p-6 space-y-6">
-              <p className="text-text-secondary leading-relaxed">{activeProject.longDescription[locale]}</p>
-              <div className="grid sm:grid-cols-2 gap-6">
+            <div className="p-4 sm:p-6 space-y-7">
+              {activeProject.image && <figure className="overflow-hidden rounded-lg border border-border-custom"><ProjectCover project={activeProject} locale={locale} detail /><figcaption className="px-4 py-2 text-xs text-text-secondary flex flex-wrap items-center justify-between gap-2"><span>{activeProject.title[locale]}</span><a href={activeProject.image} target="_blank" rel="noopener noreferrer" className="min-h-10 inline-flex items-center gap-1.5 font-medium hover:underline underline-offset-4">{t.projects.openImage}<ArrowUpRight className="size-3.5" /></a></figcaption></figure>}
+              <p className="max-w-[65ch] text-sm sm:text-base text-text-secondary leading-relaxed">{activeProject.longDescription[locale]}</p>
+              <div className="grid sm:grid-cols-2 gap-5 sm:gap-7 border-y border-border-custom py-6">
                 <div><h4 className="font-semibold mb-2">{t.projects.details.challenge}</h4><p className="text-sm text-text-secondary leading-relaxed">{activeProject.challenges[locale]}</p></div>
                 <div><h4 className="font-semibold mb-2">{t.projects.details.role}</h4><p className="text-sm text-text-secondary leading-relaxed">{activeProject.myRole[locale]}</p></div>
               </div>
-              {activeProject.technologies.length > 0 && <div><h4 className="font-semibold mb-3">{t.projects.technologies}</h4><div className="flex flex-wrap gap-2">{activeProject.technologies.map(item => <span key={item} className="info-badge text-xs">{item}</span>)}</div></div>}
+              {activeProject.technologies.length > 0 && <div><h4 className="font-semibold mb-3">{t.projects.technologies}</h4><div className="flex flex-wrap gap-2">{activeProject.technologies.map(item => <span key={item} className="tech-tag">{item}</span>)}</div></div>}
               <div>
                 <h4 className="font-semibold mb-3">{t.projects.details.highlights}</h4>
                 <ul className="list-disc pl-5 space-y-2 text-sm text-text-secondary leading-relaxed">{activeProject.highlights[locale].map(item => <li key={item}>{item}</li>)}</ul>
               </div>
-              {activeProject.image && <figure className="overflow-hidden rounded-xl border border-border-custom"><ProjectCover project={activeProject} locale={locale} /><figcaption className="px-4 py-3 text-xs text-text-secondary flex flex-wrap items-center justify-between gap-3"><span>{activeProject.title[locale]}</span><a href={activeProject.image} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 font-medium hover:underline">{t.projects.openImage}<ArrowUpRight className="size-3.5" /></a></figcaption></figure>}
               <div className="border-t border-border-custom pt-4 flex flex-wrap gap-4 items-center justify-between">
                 {sourceLabel(activeProject) && <span className="text-sm text-text-secondary">{sourceLabel(activeProject)}</span>}
                 {links(activeProject)}

@@ -110,7 +110,7 @@ h1, h2, h3, h4 {
 }
 
 .project-kind-professional {
-  @apply bg-accent-custom text-bg-primary border-accent-custom;
+  @apply bg-bg-secondary text-text-primary border-text-secondary/40;
 }
 
 .project-cover {
