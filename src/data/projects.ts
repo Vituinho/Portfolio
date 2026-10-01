@@ -32,6 +32,11 @@ export const projectsData: Project[] = [
   },
   {
     id: 'givova-coleta', slug: 'givova-coleta',
+    image: '/images/projects/givova-coleta.png',
+    imageAlt: {
+      en: 'Givova Coleta administration dashboard for inventory, shipments, scans and collector devices.',
+      pt: 'Painel administrativo do Givova Coleta para controle de estoque, cargas, leituras e coletores.'
+    },
     title: { en: 'Givova Coleta', pt: 'Givova Coleta' },
     description: {
       en: 'Offline-first barcode collection connecting legacy Windows CE handhelds to a modern backend and admin panel.',
