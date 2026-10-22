@@ -64,6 +64,7 @@ export interface Project {
   kind?: 'professional' | 'personal';
   source?: 'private' | 'open' | 'public';
   coverLabel?: { en: string; pt: string };
+  tagline?: { en: string; pt: string };
   githubUrl?: string;
   demoUrl?: string;
   featured: boolean;

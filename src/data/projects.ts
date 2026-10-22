@@ -190,6 +190,7 @@ export const projectsData: Project[] = [
       pt: 'O Je Parle Français ensina francês para falantes de português desde o início, com trilhas para viver no Québec/Canadá e na França. Um teste de nivelamento adaptativo estima cada habilidade, e um planejador diário monta uma sessão personalizada de 5 a 60 minutos que combina revisão espaçada (FSRS), novas lições, compreensão oral e pronúncia. O aluno pratica em contexto com situações reais, de abrir uma conta no Québec a alugar um apartamento na França, e um tutor com IA conduz conversas cujas correções voltam para a revisão. O projeto está em desenvolvimento inicial: o ciclo principal de aprendizado está implementado e testado, enquanto o tutor por voz e a preparação para exames ainda são experimentais.'
     },
     coverLabel: { en: 'Place → Practice → Review', pt: 'Nivelar → Praticar → Revisar' },
+    tagline: { en: 'French for real life.', pt: 'Francês para a vida real.' },
     technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'PostgreSQL', 'Prisma', 'Better Auth', 'Zod', 'Claude API', 'Azure Speech', 'Vitest', 'Playwright'],
     coreTechnologies: ['Next.js', 'TypeScript', 'PostgreSQL', 'Prisma', 'Claude API'],
     categoryLabel: { en: 'Language Learning Platform', pt: 'Plataforma de Ensino de Idiomas' },
