@@ -121,10 +121,9 @@ export const pt: Translations = {
       email: "E-mail",
       subject: "Assunto",
       message: "Mensagem",
-      submit: "Enviar mensagem",
-      sending: "Enviando...",
-      success: "Obrigado! Sua mensagem foi enviada com sucesso.",
-      error: "Ocorreu um erro. Por favor, tente novamente mais tarde.",
+      submit: "Enviar pelo seu app de e-mail",
+      hint: "Abre o seu app de e-mail com esta mensagem preenchida e endereçada a mim.",
+      success: "Seu app de e-mail deve ter aberto com a mensagem pronta para enviar. Se nada abriu, escreva para",
       validation: {
         name: "O nome é obrigatório.",
         email: "Digite um e-mail válido.",

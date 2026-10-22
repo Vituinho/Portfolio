@@ -27,8 +27,7 @@ export default function Contact() {
   const { locale, t } = useI18n();
   const [formData, setFormData] = useState<FormState>({ name: '', email: '', subject: '', message: '' });
   const [errors, setErrors] = useState<FormErrors>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success'>('idle');
   const [copiedEmail, setCopiedEmail] = useState(false);
 
   const validate = (): boolean => {
@@ -62,18 +61,11 @@ export default function Contact() {
     e.preventDefault();
     if (!validate()) return;
 
-    setIsSubmitting(true);
-    setSubmitStatus('idle');
-
-    // Simulate backend submission (Server Action or API integration endpoint)
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      
-      // Auto-hide success toast after 5s
-      setTimeout(() => setSubmitStatus('idle'), 5000);
-    }, 2000);
+    // There is no backend: hand the message to the visitor's email app, already addressed and filled in.
+    const body = `${formData.message}\n\n${formData.name}\n${formData.email}`;
+    window.location.href = `mailto:${contactData.email}?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(body)}`;
+    setSubmitStatus('success');
+    setTimeout(() => setSubmitStatus('idle'), 10000);
   };
 
   const copyToClipboard = () => {
@@ -174,7 +166,6 @@ export default function Contact() {
                       name="name"
                       value={formData.name}
                       onChange={handleInputChange}
-                      disabled={isSubmitting}
                       className={`min-h-11 px-4 py-3 text-base rounded-lg bg-bg-secondary border text-text-primary transition-colors ${
                         errors.name 
                           ? "border-red-500 focus:border-red-500" 
@@ -199,7 +190,6 @@ export default function Contact() {
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      disabled={isSubmitting}
                       className={`min-h-11 px-4 py-3 text-base rounded-lg bg-bg-secondary border text-text-primary transition-colors ${
                         errors.email 
                           ? "border-red-500 focus:border-red-500" 
@@ -226,7 +216,6 @@ export default function Contact() {
                     name="subject"
                     value={formData.subject}
                     onChange={handleInputChange}
-                    disabled={isSubmitting}
                     className={`min-h-11 px-4 py-3 text-base rounded-lg bg-bg-secondary border text-text-primary transition-colors ${
                       errors.subject 
                         ? "border-red-500 focus:border-red-500" 
@@ -252,7 +241,6 @@ export default function Contact() {
                     rows={5}
                     value={formData.message}
                     onChange={handleInputChange}
-                    disabled={isSubmitting}
                     className={`min-h-11 px-4 py-3 text-base rounded-lg bg-bg-secondary border text-text-primary transition-colors resize-none ${
                       errors.message 
                         ? "border-red-500 focus:border-red-500" 
@@ -268,38 +256,33 @@ export default function Contact() {
                 </div>
 
                 {/* Notifications feedback */}
-                <AnimatePresence>
-                  {submitStatus === 'success' && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      className="bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 rounded-lg p-3 text-xs font-semibold"
-                    >
-                      {t.contact.form.success}
-                    </motion.div>
-                  )}
-                  {submitStatus === 'error' && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      className="bg-red-500/10 text-red-500 border border-red-500/20 rounded-lg p-3 text-xs font-semibold"
-                    >
-                      {t.contact.form.error}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                <div role="status" aria-live="polite">
+                  <AnimatePresence>
+                    {submitStatus === 'success' && (
+                      <motion.p
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 rounded-lg p-3 text-sm"
+                      >
+                        {t.contact.form.success} <a href={`mailto:${contactData.email}`} className="font-semibold underline underline-offset-4">{contactData.email}</a>
+                      </motion.p>
+                    )}
+                  </AnimatePresence>
+                </div>
 
                 {/* Submit button */}
-                <Button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="gap-2 cursor-pointer mt-2"
-                >
-                  <Send className="w-4 h-4" />
-                  {isSubmitting ? t.contact.form.sending : t.contact.form.submit}
-                </Button>
+                <div className="mt-2 flex flex-col gap-2">
+                  <Button
+                    type="submit"
+                    aria-describedby="contact-form-hint"
+                    className="gap-2 cursor-pointer"
+                  >
+                    <Send className="w-4 h-4" />
+                    {t.contact.form.submit}
+                  </Button>
+                  <p id="contact-form-hint" className="text-xs text-text-secondary text-center">{t.contact.form.hint}</p>
+                </div>
               </form>
             </Card>
           </div>

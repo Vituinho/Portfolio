@@ -119,10 +119,9 @@ export const en = {
       email: "Email",
       subject: "Subject",
       message: "Message",
-      submit: "Send message",
-      sending: "Sending...",
-      success: "Thank you! Your message has been sent successfully.",
-      error: "Something went wrong. Please try again later.",
+      submit: "Send with your email app",
+      hint: "Opens your email app with this message filled in and addressed to me.",
+      success: "Your email app should now be open with the message ready to send. If nothing opened, write to",
       validation: {
         name: "Name is required.",
         email: "Valid email is required.",
