@@ -58,8 +58,8 @@ export const pt: Translations = {
     filterTech: "Filtrar por Tecnologia",
     filterAll: "Todas",
     filterCategory: "Categoria",
-    githubLink: "Repositório GitHub",
-    demoLink: "Demonstração Online",
+    githubLink: "Ver código",
+    demoLink: "Visitar site",
     badgeFeatured: "Destaque",
     statusCompleted: "Concluído",
     statusInProgress: "Em Desenvolvimento",
@@ -69,6 +69,7 @@ export const pt: Translations = {
       role: "Meu Papel",
       highlights: "Destaques de Engenharia",
       challenge: "Problema Resolvido",
+      planned: "Planejado e experimental",
       lessons: "Lições Aprendidas"
     },
     viewDetails: "Ver Detalhes",

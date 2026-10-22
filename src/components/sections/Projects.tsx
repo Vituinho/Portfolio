@@ -5,11 +5,11 @@ import { useI18n } from '@/i18n/context';
 import { projectsData } from '@/data/projects';
 import type { Project } from '@/types/portfolio';
 import Card from '../ui/Card';
-import { ArrowUpRight, Github, X, ScanBarcode, Ticket, Keyboard, ShoppingBag, Building2 } from 'lucide-react';
+import { ArrowUpRight, Github, X, ScanBarcode, Ticket, Keyboard, ShoppingBag, Building2, Languages, Wallet } from 'lucide-react';
 import Image from 'next/image';
 
-const coverIcons = { 'givova-ticketing': Ticket, 'givova-coleta': ScanBarcode, keyforge: Keyboard, 'gvv-parana': ShoppingBag };
-const featuredOrder = ['givova-website', 'gvv-parana', 'givova-coleta', 'keyforge'];
+const coverIcons = { 'givova-ticketing': Ticket, 'givova-coleta': ScanBarcode, keyforge: Keyboard, 'gvv-parana': ShoppingBag, 'givova-pagamentos': Wallet, 'je-parle-francais': Languages };
+const featuredOrder = ['givova-website', 'gvv-parana', 'givova-pagamentos', 'givova-coleta', 'keyforge', 'je-parle-francais'];
 
 function ProjectCover({ project, locale, detail = false }: { project: Project; locale: 'en' | 'pt'; detail?: boolean }) {
   const Icon = coverIcons[project.id as keyof typeof coverIcons] ?? Building2;
@@ -66,8 +66,8 @@ export default function Projects() {
     ? t.projects.privateSource : project.source === 'public' ? t.projects.publicSource : project.source === 'open' ? t.projects.openSource : null;
   const links = (project: Project) => (
     <div className="flex flex-wrap gap-2 text-sm">
-      {project.githubUrl && project.source !== 'private' && <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label={`${t.projects.githubLink} — ${project.title[locale]}`} className="inline-flex min-h-11 items-center gap-1.5 rounded-lg border border-border-custom px-3 py-2 hover:bg-bg-secondary hover:border-text-secondary/50 transition-colors"><Github className="size-4" />GitHub</a>}
-      {project.demoUrl && <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-1.5 rounded-lg border border-border-custom px-3 py-2 hover:bg-bg-secondary hover:border-text-secondary/50 transition-colors">{t.projects.demoLink}<ArrowUpRight className="size-4" /></a>}
+      {project.demoUrl && <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" aria-label={`${t.projects.demoLink} — ${project.title[locale]}`} className="inline-flex min-h-11 items-center gap-1.5 rounded-lg border border-border-custom px-3 py-2 hover:bg-bg-secondary hover:border-text-secondary/50 transition-colors">{t.projects.demoLink}<ArrowUpRight className="size-4" /></a>}
+      {project.githubUrl && project.source !== 'private' && <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label={`${t.projects.githubLink} — ${project.title[locale]}`} className="inline-flex min-h-11 items-center gap-1.5 rounded-lg border border-border-custom px-3 py-2 hover:bg-bg-secondary hover:border-text-secondary/50 transition-colors"><Github className="size-4" />{t.projects.githubLink}</a>}
     </div>
   );
   const renderGrid = (items: Project[]) => (
@@ -167,6 +167,10 @@ export default function Projects() {
                 <h4 className="font-semibold mb-3">{t.projects.details.highlights}</h4>
                 <ul className="list-disc pl-5 space-y-2 text-sm text-text-secondary leading-relaxed">{activeProject.highlights[locale].map(item => <li key={item}>{item}</li>)}</ul>
               </div>
+              {activeProject.planned && <div>
+                <h4 className="font-semibold mb-3">{t.projects.details.planned}</h4>
+                <ul className="list-disc pl-5 space-y-2 text-sm text-text-secondary leading-relaxed">{activeProject.planned[locale].map(item => <li key={item}>{item}</li>)}</ul>
+              </div>}
               <div className="border-t border-border-custom pt-4 flex flex-wrap gap-4 items-center justify-between">
                 {sourceLabel(activeProject) && <span className="text-sm text-text-secondary">{sourceLabel(activeProject)}</span>}
                 {links(activeProject)}

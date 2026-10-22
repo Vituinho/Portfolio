@@ -86,6 +86,10 @@ export interface Project {
     en: string;
     pt: string;
   };
+  planned?: {
+    en: string[];
+    pt: string[];
+  };
   lessonsLearned?: {
     en: string;
     pt: string;

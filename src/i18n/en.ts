@@ -56,8 +56,8 @@ export const en = {
     filterTech: "Filter by Technology",
     filterAll: "All",
     filterCategory: "Category",
-    githubLink: "GitHub Repo",
-    demoLink: "Live Demo",
+    githubLink: "View code",
+    demoLink: "Visit website",
     badgeFeatured: "Featured",
     statusCompleted: "Completed",
     statusInProgress: "In Development",
@@ -67,6 +67,7 @@ export const en = {
       role: "My Role",
       highlights: "Engineering Highlights",
       challenge: "Problem Solved",
+      planned: "Planned and experimental",
       lessons: "Lessons Learned"
     },
     viewDetails: "View Details",
