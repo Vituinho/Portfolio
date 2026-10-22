@@ -152,7 +152,7 @@ export const projectsData: Project[] = [
   {
     id: 'keyforge', slug: 'keyforge',
     image: '/images/projects/keyforge.webp',
-    imageAlt: { en: 'KeyForge typing game homepage with a boss battle preview', pt: 'Página inicial do jogo de digitação KeyForge com prévia de uma batalha contra chefe' },
+    imageAlt: { en: 'KeyForge homepage with the headline "Forge your speed. Master every key." and an interactive typing engine', pt: 'Página inicial do KeyForge com o título "Forge your speed. Master every key." e um motor de digitação interativo' },
     title: { en: 'KeyForge', pt: 'KeyForge' },
     description: {
       en: 'An anime-inspired typing game with 1v1 PvP battles over WebSockets, a server-authoritative Node.js backend and a touch-typing academy.',
@@ -180,6 +180,8 @@ export const projectsData: Project[] = [
   },
   {
     id: 'je-parle-francais', slug: 'je-parle-francais',
+    image: '/images/projects/je-parle-francais.webp',
+    imageAlt: { en: 'Je Parle Français homepage: "Francês para a vida real." beside a tutor correction of a French sentence', pt: 'Página inicial do Je Parle Français: "Francês para a vida real." ao lado de uma correção do tutor em uma frase em francês' },
     title: { en: 'Je Parle Français', pt: 'Je Parle Français' },
     description: {
       en: 'A French-learning platform for Brazilians preparing to study, work or live in Canada or France, with adaptive placement, personalized daily plans and an AI tutor.',
