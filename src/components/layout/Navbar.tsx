@@ -88,6 +88,13 @@ export default function Navbar() {
           : "bg-transparent border-transparent"
       )}
     >
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-[60] focus:rounded-lg focus:bg-accent-custom focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-bg-primary"
+      >
+        {pt ? 'Pular para o conteúdo' : 'Skip to content'}
+      </a>
+
       {/* Scroll Progress Bar */}
       <div
         aria-hidden="true"
