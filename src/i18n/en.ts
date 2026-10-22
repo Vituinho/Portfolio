@@ -11,10 +11,10 @@ export const en = {
     contact: "Contact"
   },
   hero: {
-    ctaProjects: "View Projects",
-    ctaContact: "Contact Me",
+    ctaProjects: "View projects",
+    ctaContact: "Contact me",
     downloadCV: "Download resume",
-    avatarAlt: "Profile Picture"
+    avatarAlt: "Portrait of Victor Emanuel"
   },
   about: {
     title: "About Me",

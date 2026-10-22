@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Outfit } from "next/font/google";
+import { Inter, Schibsted_Grotesk } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
 import Navbar from "@/components/layout/Navbar";
@@ -8,11 +8,13 @@ import Footer from "@/components/layout/Footer";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
 });
 
-const outfit = Outfit({
+const schibsted = Schibsted_Grotesk({
   subsets: ["latin"],
   variable: "--font-heading",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -67,7 +69,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${outfit.variable} antialiased min-h-screen flex flex-col`}
+        className={`${inter.variable} ${schibsted.variable} antialiased min-h-screen flex flex-col`}
       >
         <Providers>
           <Navbar />

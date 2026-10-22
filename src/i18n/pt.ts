@@ -13,10 +13,10 @@ export const pt: Translations = {
     contact: "Contato"
   },
   hero: {
-    ctaProjects: "Ver Projetos",
-    ctaContact: "Fale Comigo",
+    ctaProjects: "Ver projetos",
+    ctaContact: "Fale comigo",
     downloadCV: "Baixar currículo",
-    avatarAlt: "Foto de Perfil"
+    avatarAlt: "Foto de Victor Emanuel"
   },
   about: {
     title: "Sobre Mim",
