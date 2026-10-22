@@ -23,7 +23,8 @@ export const en = {
     passions: "My Passions"
   },
   skills: {
-    title: "Technical Skills",
+    title: "Technical expertise",
+    subtitle: "Backend and cloud are where I spend most of my time. Every group lists tools I use in real projects.",
     supporting: "Also used",
     categories: {
       backend: "Backend & APIs",

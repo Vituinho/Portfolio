@@ -25,7 +25,8 @@ export const pt: Translations = {
     passions: "Minhas Paixões"
   },
   skills: {
-    title: "Habilidades Técnicas",
+    title: "Especialidades técnicas",
+    subtitle: "Backend e nuvem são onde passo a maior parte do meu tempo. Cada grupo reúne ferramentas que uso em projetos reais.",
     supporting: "Também utilizo",
     categories: {
       backend: "Backend e APIs",

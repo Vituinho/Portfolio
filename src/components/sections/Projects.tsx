@@ -4,8 +4,9 @@ import { useState, useRef, useEffect, type CSSProperties } from 'react';
 import { useI18n } from '@/i18n/context';
 import { projectsData } from '@/data/projects';
 import type { Project } from '@/types/portfolio';
-import { lineFor, lineVar } from '@/lib/stack';
+import { lineVar } from '@/lib/stack';
 import { cn } from '@/lib/utils';
+import TechTag from '../ui/TechTag';
 import { ArrowUpRight, Github, X, Lock, Globe } from 'lucide-react';
 import Image from 'next/image';
 
@@ -17,15 +18,6 @@ const byOrder = (order: string[]) => (a: Project, b: Project) => order.indexOf(a
 
 const hostOf = (url: string) => new URL(url).hostname.replace(/^www\./, '');
 const repoPathOf = (url: string) => new URL(url).host + new URL(url).pathname;
-
-function TechTag({ name }: { name: string }) {
-  return (
-    <li className="tech-tag gap-1.5">
-      <span aria-hidden="true" className="line-dot size-1.5" style={{ '--dot': lineVar(lineFor(name)) } as CSSProperties} />
-      {name}
-    </li>
-  );
-}
 
 function ProjectMedia({ project, locale, sizes, className }: { project: Project; locale: Locale; sizes: string; className?: string }) {
   const { t } = useI18n();

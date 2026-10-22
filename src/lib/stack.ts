@@ -22,6 +22,7 @@ const extraLines: Record<string, LineColor> = {
   'WinForms': 'backend',
   '.NET Compact Framework 3.5': 'backend',
   'Windows CE': 'backend',
+  'AWS IAM': 'cloud',
   'Alembic': 'data',
   'Supabase Storage': 'cloud',
   'Azure Speech': 'cloud',
