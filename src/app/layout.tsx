@@ -18,7 +18,7 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   title: "Victor Emanuel | Software Engineer",
   description:
-    "Software Engineer building web applications, internal systems and automation with Next.js, TypeScript, Python, FastAPI and PostgreSQL.",
+    "Software Engineer specializing in backend engineering, cloud infrastructure, APIs and automation with Node.js, NestJS, TypeScript, Python, FastAPI, PostgreSQL and AWS.",
   metadataBase: new URL("https://portfolio-vituinho.vercel.app/"),
 
   alternates: {
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Victor Emanuel | Software Engineer",
     description:
-      "Software Engineer building web applications, internal systems and automation with Next.js, TypeScript, Python, FastAPI and PostgreSQL.",
+      "Software Engineer specializing in backend engineering, cloud infrastructure, APIs and automation with Node.js, NestJS, TypeScript, Python, FastAPI, PostgreSQL and AWS.",
     url: "https://portfolio-vituinho.vercel.app/",
     siteName: "Victor Emanuel Portfolio",
     images: [
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Victor Emanuel | Software Engineer",
     description:
-      "Software Engineer building web applications, internal systems and automation with Next.js, TypeScript, Python, FastAPI and PostgreSQL.",
+      "Software Engineer specializing in backend engineering, cloud infrastructure, APIs and automation with Node.js, NestJS, TypeScript, Python, FastAPI, PostgreSQL and AWS.",
     images: ["/opengraph-image"],
   },
 

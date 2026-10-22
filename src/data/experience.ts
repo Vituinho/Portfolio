@@ -4,29 +4,33 @@ export const experienceData: Experience[] = [
   {
     company: 'Givova Transportes',
     position: {
-      en: 'Technology Analyst — Software Development & IT',
-      pt: 'Analista de Tecnologia — Desenvolvimento de Software e TI'
+      en: 'Software Engineer',
+      pt: 'Engenheiro de Software'
     },
     location: { en: 'Brazil', pt: 'Brasil' },
     description: {
-      en: 'Developing software, internal systems and automations for company operations, alongside IT support and infrastructure. I identify operational problems and build solutions to reduce manual work and improve productivity.',
-      pt: 'Desenvolvimento de software, sistemas internos e automações para a operação da empresa, junto ao suporte e à infraestrutura de TI. Identifico problemas operacionais e construo soluções para reduzir tarefas manuais e melhorar a produtividade.'
+      en: "I design and build the backend systems, APIs, cloud infrastructure and automations behind Givova Transportes' operations, from payments and barcode collection to customer-facing websites, and I support the company's IT environment.",
+      pt: 'Projeto e desenvolvo os sistemas backend, APIs, infraestrutura em nuvem e automações da operação da Givova Transportes, de pagamentos e coleta de códigos de barras a sites para clientes, e dou suporte ao ambiente de TI da empresa.'
     },
-    technologies: ['Next.js', 'React', 'TypeScript', 'Python', 'FastAPI', 'SQLAlchemy', 'PostgreSQL', 'C#', 'Windows CE'],
+    technologies: ['TypeScript', 'Node.js', 'Python', 'FastAPI', 'Laravel', 'PostgreSQL', 'AWS S3', 'AWS IAM', 'Amazon SES', 'GitHub Actions', 'Next.js', 'C#', 'Windows CE'],
     achievements: {
       en: [
-        'Developed an internal IT ticketing platform, automations, monitoring tools and operational systems.',
-        'Worked on barcode/data collection solutions integrating legacy handheld devices with modern services.',
-        'Developed the Givova institutional website and GVV Paraná sofa and mattress e-commerce website.',
-        'Install and configure computers and workstations; troubleshoot hardware, software, printers and devices.',
-        'Support employees and company departments, the IT environment and business systems including DBFrete.'
+        'Built Givova Pagamentos, a payment-management system with authentication, authorization and operational workflows from payment request to receipt.',
+        'Built Givova Coleta, an offline-first barcode collection platform: a C# client for Windows CE handhelds, a FastAPI sync API with idempotent retries, PostgreSQL and a Next.js admin panel.',
+        'Designed an automated PostgreSQL backup pipeline to Amazon S3 with GitHub Actions and IAM OIDC federation (no long-lived keys), lifecycle retention and CloudWatch/SNS alerting.',
+        'Developed the Givova Transportes corporate website and the GVV Paraná e-commerce, including checkout with signed Mercado Pago webhooks.',
+        'Built an internal IT ticketing platform (FastAPI, SQLAlchemy, Next.js), automations and monitoring tools.',
+        'Configure cloud and hosting services, including Amazon SES for transactional email and deployments on Railway and cPanel.',
+        'Support employees, workstations, devices and business systems such as DBFrete.'
       ],
       pt: [
-        'Desenvolvi uma plataforma interna de chamados de TI, automações, ferramentas de monitoramento e sistemas operacionais.',
-        'Atuei em soluções de códigos de barras e coleta de dados integrando dispositivos legados a serviços modernos.',
-        'Desenvolvi o site institucional da Givova e o e-commerce de sofás e colchões GVV Paraná.',
-        'Instalo e configuro computadores e estações de trabalho; resolvo problemas de hardware, software, impressoras e dispositivos.',
-        'Presto suporte aos colaboradores e setores da empresa, ao ambiente de TI e aos sistemas de negócio, incluindo o DBFrete.'
+        'Desenvolvi o Givova Pagamentos, sistema de gestão de pagamentos com autenticação, autorização e fluxos operacionais da solicitação ao comprovante.',
+        'Desenvolvi o Givova Coleta, plataforma de coleta de códigos de barras com operação offline: cliente C# para coletores Windows CE, API de sincronização em FastAPI com novas tentativas idempotentes, PostgreSQL e painel administrativo em Next.js.',
+        'Projetei um pipeline automatizado de backup do PostgreSQL para o Amazon S3 com GitHub Actions e federação IAM OIDC (sem chaves de longa duração), retenção por ciclo de vida e alertas com CloudWatch/SNS.',
+        'Desenvolvi o site corporativo da Givova Transportes e o e-commerce GVV Paraná, incluindo checkout com webhooks assinados do Mercado Pago.',
+        'Desenvolvi uma plataforma interna de chamados de TI (FastAPI, SQLAlchemy, Next.js), automações e ferramentas de monitoramento.',
+        'Configuro serviços de nuvem e hospedagem, incluindo Amazon SES para e-mails transacionais e deploys no Railway e no cPanel.',
+        'Dou suporte a colaboradores, estações de trabalho, dispositivos e sistemas de negócio como o DBFrete.'
       ]
     }
   },

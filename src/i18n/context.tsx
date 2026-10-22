@@ -42,8 +42,8 @@ export const I18nProvider = ({ children }: { children: React.ReactNode }) => {
     const isPt = locale === 'pt';
     const title = isPt ? 'Victor Emanuel | Engenheiro de Software' : 'Victor Emanuel | Software Engineer';
     const description = isPt
-      ? 'Engenheiro de Software desenvolvendo aplicações web, sistemas internos e automações com Next.js, TypeScript, Python, FastAPI e PostgreSQL.'
-      : 'Software Engineer building web applications, internal systems and automation with Next.js, TypeScript, Python, FastAPI and PostgreSQL.';
+      ? 'Engenheiro de Software especializado em engenharia backend, infraestrutura em nuvem, APIs e automação com Node.js, NestJS, TypeScript, Python, FastAPI, PostgreSQL e AWS.'
+      : 'Software Engineer specializing in backend engineering, cloud infrastructure, APIs and automation with Node.js, NestJS, TypeScript, Python, FastAPI, PostgreSQL and AWS.';
     document.documentElement.lang = isPt ? 'pt-BR' : 'en';
     document.title = title;
     for (const selector of ['meta[name="description"]', 'meta[property="og:description"]', 'meta[name="twitter:description"]']) {

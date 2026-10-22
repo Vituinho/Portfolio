@@ -15,7 +15,7 @@ export const pt: Translations = {
   hero: {
     ctaProjects: "Ver Projetos",
     ctaContact: "Fale Comigo",
-    downloadCV: "Baixar Currículo",
+    downloadCV: "Baixar currículo",
     avatarAlt: "Foto de Perfil"
   },
   about: {
@@ -28,13 +28,11 @@ export const pt: Translations = {
     title: "Habilidades Técnicas",
     supporting: "Também utilizo",
     categories: {
-      frontend: "Desenvolvimento Frontend",
-      backend: "Desenvolvimento Backend",
-      languages: "Linguagens de Programação",
-      databases: "Bancos de Dados e Serviços de Backend",
-      tools: "Infraestrutura, Deploy e Ferramentas",
-      frameworks: "Bibliotecas & Frameworks",
-      other: "Engenharia e Integração"
+      backend: "Backend e APIs",
+      cloud: "Nuvem e DevOps",
+      databases: "Bancos de Dados",
+      frontend: "Frontend",
+      tools: "Ferramentas e Testes"
     },
     years: "anos",
     year: "ano",

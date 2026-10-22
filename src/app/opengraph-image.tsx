@@ -12,7 +12,7 @@ export default function OpenGraphImage() {
         <span style={{ fontSize: 76, fontWeight: 700 }}>Victor Emanuel</span>
         <span style={{ fontSize: 36 }}>Software Engineer / Engenheiro de Software</span>
       </div>
-      <div style={{ display: 'flex', fontSize: 26, color: '#a1a1aa', borderTop: '1px solid #27272a', paddingTop: 28 }}>Software · Business Systems · Automation</div>
+      <div style={{ display: 'flex', fontSize: 26, color: '#a1a1aa', borderTop: '1px solid #27272a', paddingTop: 28 }}>Backend, cloud infrastructure, APIs and automation</div>
     </div>,
     size
   );

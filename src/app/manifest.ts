@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'Victor Emanuel',
     short_name: 'Portfolio',
-    description: 'Software Engineer — internal systems, web applications and automation',
+    description: 'Software Engineer — backend, cloud infrastructure, APIs and automation',
     start_url: '/',
     display: 'standalone',
     background_color: '#09090b',

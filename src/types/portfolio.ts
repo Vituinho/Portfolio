@@ -4,6 +4,7 @@ export interface ProfileInfo {
     en: string;
     pt: string;
   };
+  age: number;
   shortIntro: {
     en: string;
     pt: string;
@@ -28,7 +29,7 @@ export interface ProfileInfo {
   cvUrl: string;
 }
 
-export type SkillCategory = 'frontend' | 'backend' | 'languages' | 'databases' | 'tools' | 'frameworks' | 'other';
+export type SkillCategory = 'backend' | 'cloud' | 'databases' | 'frontend' | 'tools';
 
 export interface Skill {
   name: string;

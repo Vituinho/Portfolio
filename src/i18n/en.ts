@@ -13,7 +13,7 @@ export const en = {
   hero: {
     ctaProjects: "View Projects",
     ctaContact: "Contact Me",
-    downloadCV: "Download CV",
+    downloadCV: "Download resume",
     avatarAlt: "Profile Picture"
   },
   about: {
@@ -26,13 +26,11 @@ export const en = {
     title: "Technical Skills",
     supporting: "Also used",
     categories: {
-      frontend: "Frontend Development",
-      backend: "Backend Development",
-      languages: "Programming Languages",
-      databases: "Databases & Backend Services",
-      tools: "Infrastructure, Deployment & Tools",
-      frameworks: "Libraries & Frameworks",
-      other: "Engineering & Integration"
+      backend: "Backend & APIs",
+      cloud: "Cloud & DevOps",
+      databases: "Databases",
+      frontend: "Frontend",
+      tools: "Tools & Testing"
     },
     years: "years",
     year: "year",

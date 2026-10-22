@@ -10,8 +10,8 @@ export default function Hero() {
   const { locale, t } = useI18n();
   const pt = locale === 'pt';
   const areas = pt
-    ? ['Engenharia de Software', 'Desenvolvimento Full Stack', 'Automação', 'Sistemas de Negócio', 'Soluções de TI']
-    : ['Software Engineering', 'Full-Stack Development', 'Automation', 'Business Systems', 'IT Solutions'];
+    ? ['Engenharia Backend', 'Infraestrutura em Nuvem', 'APIs', 'Automação', 'Desenvolvimento Full Stack']
+    : ['Backend Engineering', 'Cloud Infrastructure', 'APIs', 'Automation', 'Full-Stack Development'];
 
   return (
     <section id="hero" className="px-4 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-24 max-w-6xl mx-auto">
@@ -38,7 +38,7 @@ export default function Hero() {
             <div className="min-w-0">
               <p className="eyebrow mb-1">{pt ? 'Atualmente' : 'Currently'}</p>
               <p className="font-semibold">Givova Transportes</p>
-              <p className="text-sm text-text-secondary mt-1">{pt ? 'Analista de Tecnologia' : 'Technology Analyst'}</p>
+              <p className="text-sm text-text-secondary mt-1">{profileData.title[locale]}</p>
             </div>
           </div>
           <p className="flex items-start gap-3 text-sm leading-relaxed py-5"><Briefcase className="size-4 shrink-0 mt-1 text-text-secondary" />{pt ? 'Desenvolvimento de software, sistemas e automações na operação de uma empresa.' : 'Software development, systems and automation in company operations.'}</p>
