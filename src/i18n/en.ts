@@ -17,10 +17,10 @@ export const en = {
     avatarAlt: "Portrait of Victor Emanuel"
   },
   about: {
-    title: "About Me",
-    story: "My Story",
-    goals: "My Goals",
-    passions: "My Passions"
+    title: "About me",
+    story: "My story",
+    goals: "My goals",
+    passions: "My passions"
   },
   skills: {
     title: "Technical expertise",
@@ -89,7 +89,7 @@ export const en = {
     }
   },
   education: {
-    title: "International Experience",
+    title: "International experience",
     grade: "Grade"
   },
   recommendations: {
@@ -97,7 +97,7 @@ export const en = {
   },
   languages: {
     title: "Languages",
-    cefr: "CEFR Level"
+    cefr: "CEFR level"
   },
   books: {
     title: "Bookshelf",
@@ -106,20 +106,20 @@ export const en = {
     status: {
       reading: "Reading",
       finished: "Finished",
-      "want-to-read": "Want to Read"
+      "want-to-read": "Want to read"
     },
-    notes: "Personal Notes",
-    quote: "Favorite Quote"
+    notes: "Personal notes",
+    quote: "Favorite quote"
   },
   contact: {
-    title: "Contact Me",
+    title: "Contact me",
     subtitle: "Get in touch for opportunities, collaborations, or questions.",
     form: {
       name: "Name",
       email: "Email",
       subject: "Subject",
       message: "Message",
-      submit: "Send Message",
+      submit: "Send message",
       sending: "Sending...",
       success: "Thank you! Your message has been sent successfully.",
       error: "Something went wrong. Please try again later.",
@@ -130,11 +130,11 @@ export const en = {
         message: "Message is required."
       }
     },
-    copyEmail: "Copy Email",
+    copyEmail: "Copy email",
     copied: "Copied!"
   },
   footer: {
-    backToTop: "Back to Top",
+    backToTop: "Back to top",
     copyright: "All rights reserved."
   }
 };

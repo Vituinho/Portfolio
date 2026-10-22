@@ -5,7 +5,7 @@ import { useI18n } from '@/i18n/context';
 import { recommendationsData } from '@/data/recommendations';
 import Card from '../ui/Card';
 import { Quote, Linkedin, Calendar } from 'lucide-react';
-import { motion } from 'framer-motion';
+import Reveal from '../ui/Reveal';
 import Image from 'next/image';
 
 export default function Recommendations() {
@@ -13,13 +13,7 @@ export default function Recommendations() {
 
   return (
     <section id="recommendations" className="section-shell">
-      <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.3 }}
-        className="w-full"
-      >
+      <Reveal className="w-full">
         <h2 className="section-title">
           {t.recommendations.title}
         </h2>
@@ -27,13 +21,7 @@ export default function Recommendations() {
         {/* Responsive Grid layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {recommendationsData.map((rec, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.25, delay: idx * 0.05 }}
-            >
+            <Reveal key={idx} delay={idx * 50}>
               <Card className="relative flex flex-col h-full justify-between gap-6 overflow-hidden">
                 {/* Visual quote mark indicator */}
                 <Quote aria-hidden="true" className="absolute right-4 top-4 w-12 h-12 text-accent-custom/5 pointer-events-none" />
@@ -92,10 +80,10 @@ export default function Recommendations() {
                   </div>
                 </div>
               </Card>
-            </motion.div>
+            </Reveal>
           ))}
         </div>
-      </motion.div>
+      </Reveal>
     </section>
   );
 }

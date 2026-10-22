@@ -19,10 +19,10 @@ export const pt: Translations = {
     avatarAlt: "Foto de Victor Emanuel"
   },
   about: {
-    title: "Sobre Mim",
-    story: "Minha História",
-    goals: "Meus Objetivos",
-    passions: "Minhas Paixões"
+    title: "Sobre mim",
+    story: "Minha história",
+    goals: "Meus objetivos",
+    passions: "Minhas paixões"
   },
   skills: {
     title: "Especialidades técnicas",
@@ -83,15 +83,15 @@ export const pt: Translations = {
   experience: {
     title: "Experiência",
     types: {
-      "full-time": "Tempo Integral",
-      "part-time": "Meio Período",
+      "full-time": "Tempo integral",
+      "part-time": "Meio período",
       "contract": "Contrato",
       "internship": "Estágio",
       "freelance": "Freelance"
     }
   },
   education: {
-    title: "Experiência Internacional",
+    title: "Experiência internacional",
     grade: "Nota/Média"
   },
   recommendations: {
@@ -102,16 +102,16 @@ export const pt: Translations = {
     cefr: "Nível CEFR"
   },
   books: {
-    title: "Estante de Livros",
+    title: "Estante de livros",
     genre: "Gênero",
     pages: "páginas",
     status: {
       reading: "Lendo",
       finished: "Lido",
-      "want-to-read": "Quero Ler"
+      "want-to-read": "Quero ler"
     },
-    notes: "Notas Pessoais",
-    quote: "Frase Favorita"
+    notes: "Notas pessoais",
+    quote: "Frase favorita"
   },
   contact: {
     title: "Contato",
@@ -121,7 +121,7 @@ export const pt: Translations = {
       email: "E-mail",
       subject: "Assunto",
       message: "Mensagem",
-      submit: "Enviar Mensagem",
+      submit: "Enviar mensagem",
       sending: "Enviando...",
       success: "Obrigado! Sua mensagem foi enviada com sucesso.",
       error: "Ocorreu um erro. Por favor, tente novamente mais tarde.",
@@ -132,11 +132,11 @@ export const pt: Translations = {
         message: "A mensagem é obrigatória."
       }
     },
-    copyEmail: "Copiar E-mail",
+    copyEmail: "Copiar e-mail",
     copied: "Copiado!"
   },
   footer: {
-    backToTop: "Voltar ao Topo",
+    backToTop: "Voltar ao topo",
     copyright: "Todos os direitos reservados."
   }
 };

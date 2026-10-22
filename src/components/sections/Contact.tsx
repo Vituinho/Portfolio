@@ -7,6 +7,7 @@ import Card from '../ui/Card';
 import Button from '../ui/Button';
 import { Mail, Phone, Linkedin, Github, Send, Copy, Check, AlertCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Reveal from '../ui/Reveal';
 
 interface FormState {
   name: string;
@@ -112,13 +113,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="section-shell">
-      <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.3 }}
-        className="w-full"
-      >
+      <Reveal className="w-full">
         <h2 className="section-title mb-3!">
           {t.contact.title}
         </h2>
@@ -309,7 +304,7 @@ export default function Contact() {
             </Card>
           </div>
         </div>
-      </motion.div>
+      </Reveal>
     </section>
   );
 }

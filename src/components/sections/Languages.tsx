@@ -5,20 +5,14 @@ import { useI18n } from '@/i18n/context';
 import { languagesData } from '@/data/languages';
 import Card from '../ui/Card';
 import { Globe, Award, ExternalLink } from 'lucide-react';
-import { motion } from 'framer-motion';
+import Reveal from '../ui/Reveal';
 
 export default function Languages() {
   const { locale, t } = useI18n();
 
   return (
     <section id="languages" className="section-shell">
-      <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.3 }}
-        className="w-full"
-      >
+      <Reveal className="w-full">
         <h2 className="section-title">
           {t.languages.title}
         </h2>
@@ -26,13 +20,7 @@ export default function Languages() {
         {/* Display as a horizontal grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {languagesData.map((lang, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, scale: 0.98 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.25, delay: idx * 0.05 }}
-            >
+            <Reveal key={idx} delay={idx * 50}>
               <Card className="flex flex-col gap-4 h-full">
                 <div className="flex flex-wrap items-start justify-between gap-4">
                   <div className="flex items-start gap-3 min-w-0">
@@ -71,10 +59,10 @@ export default function Languages() {
                   </div>
                 )}
               </Card>
-            </motion.div>
+            </Reveal>
           ))}
         </div>
-      </motion.div>
+      </Reveal>
     </section>
   );
 }

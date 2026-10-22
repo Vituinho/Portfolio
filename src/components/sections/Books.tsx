@@ -5,7 +5,7 @@ import { useI18n } from '@/i18n/context';
 import { booksData } from '@/data/books';
 import Card from '../ui/Card';
 import { Book, Star, Quote, FileText, CheckCircle2, Bookmark } from 'lucide-react';
-import { motion } from 'framer-motion';
+import Reveal from '../ui/Reveal';
 import Image from 'next/image';
 
 export default function Books() {
@@ -40,13 +40,7 @@ export default function Books() {
 
   return (
     <section id="books" className="section-shell">
-      <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.3 }}
-        className="w-full"
-      >
+      <Reveal className="w-full">
         <h2 className="section-title">
           {t.books.title}
         </h2>
@@ -54,13 +48,7 @@ export default function Books() {
         {/* Bookshelf Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {booksData.map((book, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.25, delay: idx * 0.05 }}
-            >
+            <Reveal key={idx} delay={idx * 50}>
               <Card className="flex flex-col h-full overflow-hidden p-0 sm:p-0">
                 {/* Book Cover Container */}
                 <div className="relative aspect-[4/3] bg-bg-secondary border-b border-border-custom/40 select-none overflow-hidden group">
@@ -130,10 +118,10 @@ export default function Books() {
                   )}
                 </div>
               </Card>
-            </motion.div>
+            </Reveal>
           ))}
         </div>
-      </motion.div>
+      </Reveal>
     </section>
   );
 }
