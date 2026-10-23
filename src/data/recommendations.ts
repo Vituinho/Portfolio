@@ -47,6 +47,7 @@ export const recommendationsData: RecommendationItem[] = [
   }
 },
   {
+    photo: "/images/recommendations/darcy.jpg",
     name: "Darcy Mullin",
     position: {
       en: "District Principal – International Student Programs",
