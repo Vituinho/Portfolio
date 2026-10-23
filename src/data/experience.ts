@@ -12,24 +12,24 @@ export const experienceData: Experience[] = [
       en: "I design and build the backend systems, APIs, cloud infrastructure and automations behind Givova Transportes' operations, from payments and barcode collection to customer-facing websites, and I support the company's IT environment.",
       pt: 'Projeto e desenvolvo os sistemas backend, APIs, infraestrutura em nuvem e automações da operação da Givova Transportes, de pagamentos e coleta de códigos de barras a sites para clientes, e dou suporte ao ambiente de TI da empresa.'
     },
-    technologies: ['TypeScript', 'Node.js', 'Python', 'FastAPI', 'Laravel', 'PostgreSQL', 'AWS S3', 'AWS IAM', 'Amazon SES', 'GitHub Actions', 'Next.js', 'C#', 'Windows CE'],
+    technologies: ['TypeScript', 'Node.js', 'Python', 'FastAPI', 'Laravel', 'PostgreSQL', 'AWS', 'GitHub Actions', 'Next.js', 'C#', 'Windows CE'],
     achievements: {
       en: [
         'Built Givova Pagamentos, a payment-management system with authentication, authorization and operational workflows from payment request to receipt.',
         'Built Givova Coleta, an offline-first barcode collection platform: a C# client for Windows CE handhelds, a FastAPI sync API with idempotent retries, PostgreSQL and a Next.js admin panel.',
-        'Designed an automated PostgreSQL backup pipeline to Amazon S3 with GitHub Actions and IAM OIDC federation (no long-lived keys), lifecycle retention and CloudWatch/SNS alerting.',
+        'Designed automated, monitored database backups on AWS, run by GitHub Actions without long-lived credentials.',
         'Developed the Givova Transportes corporate website and the GVV Paraná e-commerce, including checkout with signed Mercado Pago webhooks.',
         'Built an internal IT ticketing platform (FastAPI, SQLAlchemy, Next.js), automations and monitoring tools.',
-        'Configure cloud and hosting services, including Amazon SES for transactional email and deployments on Railway and cPanel.',
+        'Configure cloud and hosting services on AWS, Railway and cPanel, including transactional email and deployments.',
         'Support employees, workstations, devices and business systems such as DBFrete.'
       ],
       pt: [
         'Desenvolvi o Givova Pagamentos, sistema de gestão de pagamentos com autenticação, autorização e fluxos operacionais da solicitação ao comprovante.',
         'Desenvolvi o Givova Coleta, plataforma de coleta de códigos de barras com operação offline: cliente C# para coletores Windows CE, API de sincronização em FastAPI com novas tentativas idempotentes, PostgreSQL e painel administrativo em Next.js.',
-        'Projetei um pipeline automatizado de backup do PostgreSQL para o Amazon S3 com GitHub Actions e federação IAM OIDC (sem chaves de longa duração), retenção por ciclo de vida e alertas com CloudWatch/SNS.',
+        'Projetei backups automatizados e monitorados de banco de dados na AWS, executados pelo GitHub Actions sem credenciais de longa duração.',
         'Desenvolvi o site corporativo da Givova Transportes e o e-commerce GVV Paraná, incluindo checkout com webhooks assinados do Mercado Pago.',
         'Desenvolvi uma plataforma interna de chamados de TI (FastAPI, SQLAlchemy, Next.js), automações e ferramentas de monitoramento.',
-        'Configuro serviços de nuvem e hospedagem, incluindo Amazon SES para e-mails transacionais e deploys no Railway e no cPanel.',
+        'Configuro serviços de nuvem e hospedagem na AWS, no Railway e no cPanel, incluindo e-mails transacionais e deploys.',
         'Dou suporte a colaboradores, estações de trabalho, dispositivos e sistemas de negócio como o DBFrete.'
       ]
     }

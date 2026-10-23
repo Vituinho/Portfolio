@@ -17,8 +17,8 @@ const evidence: Record<SkillCategory, { en: string; pt: string }> = {
     pt: 'APIs e serviços para pagamentos, sincronização de coletas e jogos multiplayer em tempo real.'
   },
   cloud: {
-    en: 'S3 backups through IAM OIDC roles, SES email, CloudWatch alerts and automated deployments.',
-    pt: 'Backups no S3 com roles IAM OIDC, e-mail com SES, alertas no CloudWatch e deploys automatizados.'
+    en: 'Deployments, backups, monitoring and access control on AWS and other cloud platforms.',
+    pt: 'Deploys, backups, monitoramento e controle de acesso na AWS e em outras plataformas de nuvem.'
   },
   databases: {
     en: 'Relational models, migrations and backups for production data.',

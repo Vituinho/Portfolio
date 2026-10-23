@@ -75,8 +75,8 @@ export default function Hero() {
           </div>
 
           <h1 className="font-bold text-[clamp(2.875rem,8.5vw,4.75rem)] leading-[0.95] tracking-[-0.045em]">{profileData.name}</h1>
-          <p className="mt-5 sm:mt-6 max-w-[24ch] font-display text-[clamp(1.375rem,3vw,2rem)] font-medium leading-[1.15] tracking-[-0.02em]">
-            {pt ? 'Engenheiro de Software especializado em backend, nuvem e automação.' : 'Software Engineer specializing in backend, cloud and automation.'}
+          <p className="mt-4 sm:mt-5 font-display text-[clamp(1.5rem,3.2vw,2.25rem)] font-medium leading-[1.1] tracking-[-0.025em]">
+            {profileData.title[locale]}
           </p>
           <p className="mt-5 max-w-[52ch] text-base sm:text-lg leading-relaxed text-text-secondary">{profileData.shortIntro[locale]}</p>
 

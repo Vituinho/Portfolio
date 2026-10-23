@@ -9,8 +9,8 @@ export const profileData: ProfileInfo = {
     pt: 'Construo sistemas backend, APIs, infraestrutura em nuvem e automações que uma empresa de logística usa todos os dias.'
   },
   bio: {
-    en: "I'm a 17-year-old Software Engineer from Brazil specializing in backend engineering, cloud infrastructure, APIs and automation. I work mainly with TypeScript, Node.js, NestJS, Python, FastAPI and PostgreSQL, and with AWS services such as S3, IAM and SES.",
-    pt: 'Sou um Engenheiro de Software brasileiro de 17 anos, especializado em engenharia backend, infraestrutura em nuvem, APIs e automação. Trabalho principalmente com TypeScript, Node.js, NestJS, Python, FastAPI e PostgreSQL, e com serviços da AWS como S3, IAM e SES.'
+    en: "I'm a 17-year-old Software Engineer from Brazil specializing in backend engineering, cloud infrastructure, APIs and automation. I work mainly with TypeScript, Node.js, NestJS, Python, FastAPI and PostgreSQL, deploying to AWS and other cloud platforms.",
+    pt: 'Sou um Engenheiro de Software brasileiro de 17 anos, especializado em engenharia backend, infraestrutura em nuvem, APIs e automação. Trabalho principalmente com TypeScript, Node.js, NestJS, Python, FastAPI e PostgreSQL, com deploy na AWS e em outras plataformas de nuvem.'
   },
   story: {
     en: "At Givova Transportes, I build the company's software: a payment-management system, an offline-first barcode collection platform, the corporate website and the GVV Paraná e-commerce. I also keep the IT environment, equipment and business systems running.",
