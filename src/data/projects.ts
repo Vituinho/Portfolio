@@ -124,7 +124,7 @@ export const projectsData: Project[] = [
     id: 'givova-ticketing', slug: 'givova-ticketing',
     image: '/images/projects/sistema-chamados-ti.webp',
     imageAlt: { en: 'Givova IT support homepage with ticket creation and tracking options', pt: 'Página inicial do suporte de TI da Givova com abertura e acompanhamento de chamados' },
-    title: { en: 'Givova IT Ticketing', pt: 'Chamados de TI Givova' },
+    title: { en: 'Givova Suporte', pt: 'Givova Suporte' },
     description: {
       en: 'An internal support platform that brings IT requests, technician workflows and status tracking into one place.',
       pt: 'Plataforma interna que reúne solicitações de TI, fluxo de trabalho dos técnicos e acompanhamento de chamados.'
@@ -136,8 +136,9 @@ export const projectsData: Project[] = [
     coverLabel: { en: 'Requests → Workflow → Resolution', pt: 'Solicitações → Atendimento → Resolução' },
     technologies: ['Python', 'FastAPI', 'SQLAlchemy', 'Alembic', 'Pydantic', 'PostgreSQL', 'Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
     coreTechnologies: ['FastAPI', 'SQLAlchemy', 'PostgreSQL', 'Next.js'],
-    categoryLabel: { en: 'Internal Support Platform', pt: 'Plataforma Interna de Suporte' },
-    category: 'Business Systems', kind: 'professional', source: 'public', featured: false,
+    categoryLabel: { en: 'IT Support System', pt: 'Sistema de Suporte de TI' },
+    category: 'Business Systems', kind: 'professional', source: 'public', featured: true, status: 'live',
+    demoUrl: 'https://suporte.givovatransportes.com.br',
     githubUrl: 'https://github.com/Vituinho/SistemaChamadosTI',
     myRole: { en: 'Software development', pt: 'Desenvolvimento de software' },
     highlights: {
