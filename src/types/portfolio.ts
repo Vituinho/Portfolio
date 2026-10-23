@@ -121,10 +121,23 @@ export interface Experience {
   };
 }
 
+export interface GalleryPhoto {
+  src: string;
+  width: number;
+  height: number;
+  alt: { en: string; pt: string };
+  /** CSS object-position used when the photo is cropped into a fixed frame. */
+  focus?: string;
+}
+
 export interface Education {
   institution: string;
   image?: string;
   imageAlt?: { en: string; pt: string };
+  program?: string;
+  period?: { en: string; pt: string };
+  location?: { en: string; pt: string };
+  gallery?: GalleryPhoto[];
   durationMonths?: number;
   course: {
     en: string;
