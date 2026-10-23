@@ -25,5 +25,5 @@ export const profileData: ProfileInfo = {
     pt: 'Em 2026, morei e estudei no Canadá por seis meses por meio de um intercâmbio internacional. Tenho inglês avançado (C1), e a experiência fortaleceu minha independência, adaptabilidade e comunicação em ambientes multiculturais.'
   },
   avatarUrl: '/images/avatar.jpeg',
-  cvUrl: '/vituinho-cv.pdf'
+  cvUrl: { en: '/resume/victor-emanuel-moraes-resume.pdf', pt: '/resume/victor-emanuel-moraes-curriculo.pdf' }
 };

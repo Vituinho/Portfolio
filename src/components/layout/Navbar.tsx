@@ -141,7 +141,7 @@ export default function Navbar() {
         {/* Actions Controls (Resume + Lang + Theme + Hamburger) */}
         <div className="flex items-center gap-1 sm:gap-2">
           <a
-            href={profileData.cvUrl}
+            href={profileData.cvUrl[locale]}
             download
             className="hidden lg:inline-flex min-h-9 items-center gap-1.5 rounded-lg border border-border-strong px-3 text-sm font-medium hover:bg-bg-secondary transition-colors"
           >
@@ -213,7 +213,7 @@ export default function Navbar() {
               ))}
             </ul>
             <a
-              href={profileData.cvUrl}
+              href={profileData.cvUrl[locale]}
               download
               onClick={handleNavClick}
               className="mt-3 flex min-h-12 items-center justify-center gap-2 rounded-lg border border-border-strong text-sm font-medium hover:bg-bg-secondary transition-colors"

@@ -26,7 +26,7 @@ export interface ProfileInfo {
     pt: string;
   };
   avatarUrl: string;
-  cvUrl: string;
+  cvUrl: { en: string; pt: string };
 }
 
 export type SkillCategory = 'backend' | 'cloud' | 'databases' | 'frontend' | 'tools';

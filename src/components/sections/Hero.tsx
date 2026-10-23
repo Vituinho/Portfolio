@@ -82,7 +82,7 @@ export default function Hero() {
 
           <div className="mt-8 grid grid-cols-2 sm:flex sm:flex-wrap gap-3">
             <a href="#projects" className="action-link col-span-2 bg-accent-custom text-bg-primary hover:bg-accent-muted">{t.hero.ctaProjects}<ArrowRight className="size-4" /></a>
-            <a href={profileData.cvUrl} download aria-label={t.hero.downloadCV} className="action-link whitespace-nowrap border border-border-strong hover:bg-bg-secondary">
+            <a href={profileData.cvUrl[locale]} download aria-label={t.hero.downloadCV} className="action-link whitespace-nowrap border border-border-strong hover:bg-bg-secondary">
               <Download aria-hidden="true" className="size-4" />
               <span className="sm:hidden">{pt ? 'Currículo' : 'Resume'}</span>
               <span className="hidden sm:inline">{t.hero.downloadCV}</span>
