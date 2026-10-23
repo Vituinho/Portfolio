@@ -34,7 +34,7 @@ export default function Recommendations() {
                 <Quote aria-hidden="true" className="absolute right-4 top-4 w-12 h-12 text-accent-custom/5 pointer-events-none" />
 
                 {/* Testimonial Quote */}
-                <p className="max-w-[65ch] text-text-secondary text-sm leading-7 z-10">
+                <p lang={locale === 'pt' && rec.testimonial.pt === rec.testimonial.en ? 'en' : undefined} className="max-w-[65ch] text-text-secondary text-sm leading-7 z-10">
                   &ldquo;{rec.testimonial[locale]}&rdquo;
                 </p>
 

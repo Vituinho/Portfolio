@@ -59,9 +59,9 @@ export const recommendationsData: RecommendationItem[] = [
     },
     date: "2026-10",
     testimonial: {
-      // Original English wording from LinkedIn, kept exactly as written.
+      // Original English wording from LinkedIn, kept exactly as written and shown untranslated in both languages.
       en: "Victor was a student in our International Program in Penticton BC. Victor has excellent communication skills in both English and Portuguese. I was impressed by Victors adaptability and leadership while in program. I look forward to what great things Victor is going to accomplish in the future.",
-      pt: "Victor foi aluno do nosso Programa Internacional em Penticton, BC. Victor tem excelentes habilidades de comunicação em inglês e em português. A adaptabilidade e a liderança do Victor durante o programa me impressionaram. Aguardo com expectativa as grandes conquistas que o Victor terá no futuro."
+      pt: "Victor was a student in our International Program in Penticton BC. Victor has excellent communication skills in both English and Portuguese. I was impressed by Victors adaptability and leadership while in program. I look forward to what great things Victor is going to accomplish in the future."
     }
   }
 ];
