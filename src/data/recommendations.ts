@@ -2,6 +2,26 @@ import { RecommendationItem } from '../types/portfolio';
 
 export const recommendationsData: RecommendationItem[] = [
   {
+    name: "Darcy Mullin",
+    position: {
+      en: "District Principal – International Student Programs",
+      pt: "District Principal – International Student Programs"
+    },
+    location: {
+      en: "Penticton, British Columbia, Canada",
+      pt: "Penticton, Colúmbia Britânica, Canadá"
+    },
+    date: "2026-10-09",
+    featured: true,
+    source: { en: "Recommendation on LinkedIn", pt: "Recomendação no LinkedIn" },
+    originalLanguage: "en",
+    testimonial: {
+      // Original wording, kept exactly as written.
+      en: "Victor was a student in our International Program in Penticton BC. Victor has excellent communication skills in both English and Portuguese. I was impressed by Victors adaptability and leadership while in program. I look forward to what great things Victor is going to accomplish in the future.",
+      pt: "Victor foi aluno do nosso Programa Internacional em Penticton, BC. Victor tem excelentes habilidades de comunicação em inglês e em português. A adaptabilidade e a liderança do Victor durante o programa me impressionaram. Aguardo com expectativa as grandes conquistas que o Victor terá no futuro."
+    }
+  },
+  {
     photo: "/images/recommendations/romulo.jpg",
     name: "Rômulo da Cruz Vieira",
     position: {

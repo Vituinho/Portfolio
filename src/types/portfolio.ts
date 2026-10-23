@@ -145,15 +145,20 @@ export interface Education {
 }
 
 export interface RecommendationItem {
-  photo: string;
+  photo?: string;
   name: string;
   position: {
     en: string;
     pt: string;
   };
-  company: string;
+  company?: string;
+  location?: { en: string; pt: string };
   linkedin?: string;
-  date: string;
+  date: string; // YYYY-MM or YYYY-MM-DD
+  featured?: boolean;
+  source?: { en: string; pt: string };
+  /** Set when the testimonial was written in one language and the other is a translation. */
+  originalLanguage?: 'en' | 'pt';
   testimonial: {
     en: string;
     pt: string;
