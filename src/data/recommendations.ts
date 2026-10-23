@@ -2,26 +2,6 @@ import { RecommendationItem } from '../types/portfolio';
 
 export const recommendationsData: RecommendationItem[] = [
   {
-    name: "Darcy Mullin",
-    position: {
-      en: "District Principal – International Student Programs",
-      pt: "District Principal – International Student Programs"
-    },
-    location: {
-      en: "Penticton, British Columbia, Canada",
-      pt: "Penticton, Colúmbia Britânica, Canadá"
-    },
-    date: "2026-10-09",
-    featured: true,
-    source: { en: "Recommendation on LinkedIn", pt: "Recomendação no LinkedIn" },
-    originalLanguage: "en",
-    testimonial: {
-      // Original wording, kept exactly as written.
-      en: "Victor was a student in our International Program in Penticton BC. Victor has excellent communication skills in both English and Portuguese. I was impressed by Victors adaptability and leadership while in program. I look forward to what great things Victor is going to accomplish in the future.",
-      pt: "Victor foi aluno do nosso Programa Internacional em Penticton, BC. Victor tem excelentes habilidades de comunicação em inglês e em português. A adaptabilidade e a liderança do Victor durante o programa me impressionaram. Aguardo com expectativa as grandes conquistas que o Victor terá no futuro."
-    }
-  },
-  {
     photo: "/images/recommendations/romulo.jpg",
     name: "Rômulo da Cruz Vieira",
     position: {
@@ -65,5 +45,22 @@ export const recommendationsData: RecommendationItem[] = [
     en: "I highly recommend Victor Emanuel for Junior Software Developer opportunities. Throughout the time I worked with him, he consistently demonstrated dedication, responsibility, and a genuine passion for learning. Victor has strong logical thinking, quickly understands new programming concepts, and actively seeks creative solutions to technical challenges. His collaborative mindset, professionalism, and eagerness to grow make him a promising developer with great potential to become a valuable member of any software development team.",
     pt: "Recomendo fortemente o Victor Emanuel para oportunidades como Desenvolvedor de Software Júnior. Durante o período em que acompanhei sua evolução, ele demonstrou dedicação, responsabilidade e um genuíno interesse em aprender. Victor possui excelente raciocínio lógico, facilidade para compreender novos conceitos de programação e iniciativa para buscar soluções criativas para desafios técnicos. Sua postura colaborativa, profissionalismo e vontade constante de evoluir fazem dele um desenvolvedor promissor, com grande potencial para se tornar um membro valioso em qualquer equipe de desenvolvimento."
   }
-}
+},
+  {
+    name: "Darcy Mullin",
+    position: {
+      en: "District Principal – International Student Programs",
+      pt: "District Principal – International Student Programs"
+    },
+    location: {
+      en: "Penticton, British Columbia, Canada",
+      pt: "Penticton, Colúmbia Britânica, Canadá"
+    },
+    date: "2026-10",
+    testimonial: {
+      // Original English wording from LinkedIn, kept exactly as written.
+      en: "Victor was a student in our International Program in Penticton BC. Victor has excellent communication skills in both English and Portuguese. I was impressed by Victors adaptability and leadership while in program. I look forward to what great things Victor is going to accomplish in the future.",
+      pt: "Victor foi aluno do nosso Programa Internacional em Penticton, BC. Victor tem excelentes habilidades de comunicação em inglês e em português. A adaptabilidade e a liderança do Victor durante o programa me impressionaram. Aguardo com expectativa as grandes conquistas que o Victor terá no futuro."
+    }
+  }
 ];
