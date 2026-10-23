@@ -28,7 +28,7 @@ export const skillsData: Skill[] = [
   { name: 'Next.js', icon: 'Cpu', category: 'frontend' },
   { name: 'React', icon: 'Atom', category: 'frontend' },
   { name: 'Tailwind CSS', icon: 'Wind', category: 'frontend' },
-  { name: 'JavaScript', icon: 'Code2', category: 'frontend', supporting: true },
+  { name: 'JavaScript', icon: 'Code2', category: 'frontend' },
   { name: 'HTML / CSS', icon: 'FileCode', category: 'frontend', supporting: true },
   { name: 'Bootstrap', icon: 'Layout', category: 'frontend', supporting: true },
   { name: 'Git', icon: 'GitBranch', category: 'tools' },

@@ -6,6 +6,7 @@ import { skillsData } from '@/data/skills';
 import type { SkillCategory } from '@/types/portfolio';
 import { lineVar, type LineColor } from '@/lib/stack';
 import { cn } from '@/lib/utils';
+import TechLogo from '../ui/TechLogo';
 
 const primaryCategories: SkillCategory[] = ['backend', 'cloud'];
 const secondaryCategories: SkillCategory[] = ['databases', 'frontend', 'tools'];
@@ -47,11 +48,21 @@ function SkillPanel({ category, primary }: { category: SkillCategory; primary: b
       <span aria-hidden="true" className="absolute inset-x-0 top-0 h-0.5 bg-(--line)" />
       <h3 className={cn('font-semibold tracking-tight', primary ? 'text-2xl sm:text-[1.75rem]' : 'text-lg')}>{t.skills.categories[category]}</h3>
       <p className={cn('mt-2 leading-relaxed text-text-secondary', primary ? 'text-sm sm:text-[15px] max-w-[46ch]' : 'text-sm')}>{evidence[category][locale]}</p>
-      <ul className={cn(primary ? 'mt-7 grid grid-cols-2 gap-x-6 gap-y-3 text-base font-medium' : 'mt-5 flex flex-wrap gap-x-4 gap-y-2 text-sm font-medium')}>
+      <ul className={cn(primary ? 'mt-7 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-2 gap-2.5' : 'mt-5 flex flex-wrap gap-2')}>
         {main.map(skill => (
-          <li key={skill.name} className="flex min-w-0 items-center gap-2.5">
-            {primary && <span aria-hidden="true" className="h-px w-3 shrink-0 bg-(--line)" />}
-            <span className="min-w-0">{skill.localizedName?.[locale] ?? skill.name}</span>
+          <li
+            key={skill.name}
+            className={cn(
+              'group/skill flex min-w-0 items-center rounded-lg border border-border-custom bg-bg-secondary/60 font-medium transition-colors hover:border-border-strong',
+              primary ? 'gap-3 px-3 py-2.5 text-sm sm:text-[15px]' : 'gap-2 px-2.5 py-1.5 text-sm'
+            )}
+          >
+            <TechLogo
+              name={skill.name}
+              fallback={skill.icon}
+              className={cn('shrink-0 text-text-secondary transition-colors group-hover/skill:text-(--line)', primary ? 'size-5' : 'size-4')}
+            />
+            <span className="min-w-0 leading-tight">{skill.localizedName?.[locale] ?? skill.name}</span>
           </li>
         ))}
       </ul>
